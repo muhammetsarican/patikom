@@ -2,11 +2,11 @@ const { default: mongoose } = require("mongoose");
 
 const AnimalSchema = new mongoose.Schema({
     mother_id: {
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "animal"
     },
     genre_id: {
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "genre"
     },
     chip_status: String,
@@ -14,7 +14,7 @@ const AnimalSchema = new mongoose.Schema({
     gender: String,
     born_date: Date,
     vaccines: [{
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "vaccine"
     }],
     status: String
