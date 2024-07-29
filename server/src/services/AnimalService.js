@@ -17,11 +17,17 @@ class AnimalService extends BaseService {
             },
             {
                 path: "folk_id",
-                select: "name country"
+                select: "name country",
+                match: {
+                    status: "true"
+                }
             },
             {
                 path: "vaccines",
-                select: "name"
+                select: "name",
+                match: {
+                    status: "true"
+                }
             }
         ])
     }
