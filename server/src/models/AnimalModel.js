@@ -5,9 +5,9 @@ const AnimalSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "animal"
     },
-    genre_id: {
+    folk_id: {
         type: mongoose.Types.ObjectId,
-        ref: "genre"
+        ref: "folk"
     },
     chip_status: String,
     name: String,
