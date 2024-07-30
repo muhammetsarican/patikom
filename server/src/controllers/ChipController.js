@@ -1,10 +1,10 @@
 const BaseController = require("./BaseController");
-const PlateService = require("../services/PlateService");
+const ChipService = require("../services/ChipService");
 
-class PlateController extends BaseController {
+class ChipController extends BaseController {
     constructor() {
-        super(PlateService);
+        super(ChipService);
     }
 }
 
-module.exports = new PlateController();
+module.exports = new ChipController();
