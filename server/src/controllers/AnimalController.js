@@ -1,6 +1,8 @@
 const BaseController = require("./BaseController");
-const AnimalService = require("../services/AnimalService");
 const SuccessMessage = require("../handlers/SuccessMessage");
+
+const AnimalService = require("../services/AnimalService");
+const VaccineService = require("../services/VaccineService");
 
 class AnimalController extends BaseController {
     constructor() {
@@ -9,11 +11,11 @@ class AnimalController extends BaseController {
 
     addVaccine() {
         return (req, res, next) => {
-            VaccineService.read(req.body)
-                .then(vaccine => {
-                    AnimalService.read({ _id: req.params.id })
-                        .then(animal => {
-                            if (!animal.vaccines) animal["vaccines"] = [];
+            AnimalService.read({ _id: req.params.id })
+                .then(animal => {
+                    if (!animal.vaccines) animal["vaccines"] = [];
+                    VaccineService.read(req.body)
+                        .then(vaccine => {
                             if (!vaccine) {
                                 VaccineService.create(req.body)
                                     .then(newVaccine => {
