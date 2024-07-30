@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  db:
+    image: mongo:latest
+    container_name: patikom_db
+    ports:
+      - 27017:${DB_PORT}
+    volumes:
+      - data:/Docker/data/db/
+
+volumes:
+  data:
