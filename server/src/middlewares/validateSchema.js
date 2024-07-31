@@ -1,11 +1,13 @@
 const ApiError = require("../Errors/ApiError");
 
-module.exports.validate = (schema) => (req, res, next) => {
+const validate = (schema) => (req, res, next) => {
     schema.validate(req.body)
-        .then((response) => {
+        .then(() => {
             next();
         })
         .catch(err => {
-            next(ApiError.set(err, 400))
+            next(ApiError.set(err.message, 400))
         });
 }
+
+module.exports = validate;
