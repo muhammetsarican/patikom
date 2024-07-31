@@ -21,7 +21,7 @@ class BaseController {
             where.status = "true";
             this.service.read(where)
                 .then(response => {
-                    if (!response || !response.length) return next(new ApiError("No records found!", 404));
+                    if (!response || !response.length) return next(ApiError.notFound());
                 })
         }
     }
@@ -30,7 +30,7 @@ class BaseController {
         return (req, res, next) => {
             this.service.read({ status })
                 .then(response => {
-                    if (!response || !response.length) return next(new ApiError("No records found!", 404));
+                    if (!response || !response.length) return next(ApiError.notFound());
                     res.status(200).send(new SuccessMessage(response));
                 })
         }
