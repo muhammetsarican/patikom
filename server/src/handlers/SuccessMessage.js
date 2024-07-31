@@ -1,10 +1,7 @@
 class SuccessMessage {
     constructor(message) {
+        this.success = false;
         this.message = message;
-        return {
-            success: true,
-            message: this.message
-        };
     }
 }
 
