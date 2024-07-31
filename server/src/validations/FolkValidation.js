@@ -12,7 +12,7 @@ const updateValidation = yup.object({
     country: yup.string()
 })
 
-module.exports.schemas = {
+module.exports = {
     createValidation,
     updateValidation
 }

@@ -26,7 +26,7 @@ const registerValidation = yup.object({
     password: yup.string().min(8),
 })
 
-module.exports.schemas = {
+module.exports = {
     createValidation,
     updateValidation,
     loginValidation,

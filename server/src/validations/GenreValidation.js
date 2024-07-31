@@ -8,7 +8,7 @@ const updateValidation = yup.object({
     name: yup.string().required()
 })
 
-module.exports.schemas = {
+module.exports = {
     createValidation,
     updateValidation
 }

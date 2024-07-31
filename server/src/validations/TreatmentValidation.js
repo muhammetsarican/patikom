@@ -28,7 +28,7 @@ const addMedicineValidation = yup.object({
     description: yup.string()
 })
 
-module.exports.schemas = {
+module.exports = {
     createValidation,
     updateValidation,
     addCategoryValidation,

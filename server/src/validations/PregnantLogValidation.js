@@ -12,7 +12,7 @@ const updateValidation = yup.object({
     is_completed: yup.boolean()
 })
 
-module.exports.schemas = {
+module.exports = {
     createValidation,
     updateValidation
 }

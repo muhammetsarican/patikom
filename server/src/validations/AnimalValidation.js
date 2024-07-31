@@ -26,7 +26,7 @@ const addVaccineValidation = yup.object({
     description: yup.string().min(8)
 })
 
-module.exports.schemas = {
+module.exports = {
     createValidation,
     updateValidation,
     addVaccineValidation
