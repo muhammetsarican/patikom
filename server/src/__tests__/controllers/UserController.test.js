@@ -1,4 +1,5 @@
 const UserController = require("../../controllers/UserController");
+const PASSWORD_KEY = process.env;
 
 const mockRequest = {
     body: {
@@ -12,11 +13,29 @@ const mockResponse = {
     send: jest.fn(value => value),
 }
 
+class res {
+    status(value) {
+        this.status = value;
+        return this;
+    }
+    send(message) {
+        this.message = message;
+        return this;
+    }
+}
+
+const Res = new res();
 const next = jest.fn();
 
 describe("login_test", () => {
+    beforeEach(() => {
+        jest.resetModules();
+        process.env.PASSWORD_KEY = PASSWORD_KEY;
+    })
     it("should return not found error", async () => {
-        await UserController.login(mockRequest, mockResponse, next);
-        expect(mockResponse.status).toHaveBeenCalledWith(400);
+        UserController.login()(mockRequest, Res, next)
+
+        console.log(Res.status);
+        expect(Res.status).toBe(404);
     })
 })
