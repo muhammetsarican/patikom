@@ -23,7 +23,7 @@ const registerValidation = yup.object({
     fname: yup.string().min(3),
     lname: yup.string().min(3),
     mail: yup.string().email().required(),
-    password: yup.string().min(8),
+    password: yup.string().min(8).required(),
 })
 
 const changeRoleValidation = yup.object({
