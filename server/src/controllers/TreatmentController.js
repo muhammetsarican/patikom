@@ -16,7 +16,7 @@ class TreatmentController extends BaseController {
                 .then(treatment => {
                     if (!treatment || !treatment.length) return next(ApiError.notFound());
                     if (!treatment.categories) treatment["categories"] = [];
-                    CategoryService.read(req.body)
+                    CategoryService.read({ _id: req.params.category_id })
                         .then(category => {
                             if (!category || !category.length) return next(ApiError.notFound());
                             if (!category) {
@@ -43,7 +43,7 @@ class TreatmentController extends BaseController {
                 .then(treatment => {
                     if (!treatment || !treatment.length) return next(ApiError.notFound());
                     if (!treatment.medicines) treatment["medicines"] = [];
-                    MedicineService.read(req.body)
+                    MedicineService.read({ _id: req.params.medicine_id })
                         .then(medicine => {
                             if (!medicine || !medicine.length) return next(ApiError.notFound());
                             if (!medicine) {
