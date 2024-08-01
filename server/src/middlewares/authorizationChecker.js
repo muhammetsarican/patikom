@@ -8,7 +8,7 @@ const AuthorizationRoleMatcher = (authorizatedRole, userRole) => {
     return false;
 }
 
-module.exports = (authorizatedRole) => (req, res, next) => {
+module.exports = (authorizatedRole = "admin") => (req, res, next) => {
     const isAuthorized = AuthorizationRoleMatcher(authorizatedRole, req.user?.role);
     if (!isAuthorized) return next(ApiError.unauthorized());
     next();

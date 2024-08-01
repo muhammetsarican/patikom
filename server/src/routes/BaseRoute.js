@@ -12,23 +12,23 @@ class BaseRoute {
         this.router = router;
     }
 
-    newRecord(authorizatedRole = "admin") {
+    newRecord(authorizatedRole) {
         this.router.route("/").post(authenticate, authorizationChecker(authorizatedRole), validate(this.schemas.createValidation), this.controller.newRecord())
     }
 
-    listOne(authorizatedRole = "admin") {
+    listOne(authorizatedRole) {
         this.router.route("/:id").get(idChecker(), authenticate, authorizationChecker(authorizatedRole), this.controller.listOne());
     }
 
-    listAll(authorizatedRole = "admin") {
+    listAll(authorizatedRole) {
         this.router.route("/").get(authenticate, authorizationChecker(authorizatedRole), this.controller.listAll());
     }
 
-    updateOne(authorizatedRole = "admin") {
+    updateOne(authorizatedRole) {
         this.router.route("/:id").patch(idChecker(), authenticate, authorizationChecker(authorizatedRole), validate(this.schemas.updateValidation), this.controller.updateOne());
     }
 
-    deleteOne(authorizatedRole = "admin") {
+    deleteOne(authorizatedRole) {
         this.router.route("/:id").delete(idChecker(), authenticate, authorizationChecker(authorizatedRole), this.controller.deleteOne());
     }
 
