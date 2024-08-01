@@ -33,7 +33,7 @@ class UserController extends BaseController {
 
     changeRole() {
         return (req, res, next) => {
-            UserService.update(req.params.user_id, req.body.role)
+            UserService.update(req.params.user_id, req.body)
                 .then(response => {
                     res.status(200).send(new SuccessMessage(response));
                 })

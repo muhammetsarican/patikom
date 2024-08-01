@@ -1,6 +1,8 @@
 const BaseRoute = require("./BaseRoute");
+
 const UserController = require("../controllers/UserController");
 const schemas = require("../validations/UserValidation");
+
 const validate = require("../middlewares/validateSchema");
 const authenticate = require("../middlewares/authenticate");
 const authorizationChecker = require("../middlewares/authorizationChecker");
@@ -20,7 +22,7 @@ class UserRoute extends BaseRoute {
     }
 
     changeRole(Router) {
-        Router.route("/:user-id/change-role").post(idChecker("user-id"), authenticate, authorizationChecker(), validate(schemas.changeRoleValidation), UserController.changeRole());
+        Router.route("/:user_id/change-role").post(idChecker("user_id"), authenticate, authorizationChecker(), validate(schemas.changeRoleValidation), UserController.changeRole());
     }
 
     indexRoutes() {
