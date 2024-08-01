@@ -35,4 +35,4 @@ class UserRoute extends BaseRoute {
     }
 }
 
-module.exports.UserRoute = new UserRoute();
+module.exports = new UserRoute();
