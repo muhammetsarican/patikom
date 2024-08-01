@@ -95,8 +95,8 @@ These routes are special routes.
     POST /user/${user-id}/change-role
     ```
 
-    | Parameter | Type     | Description                       |
-    | :-------- | :------- | :-------------------------------- |
+    | Parameter | Type     | Description                       ||
+    | :-------- | :------- | :-------------------------------- |-|
     | `user-id`| `string` |  **Required**. ID of the user whose role you want to change | *Only admins can perform this operation.* |
 
 
@@ -113,8 +113,8 @@ These routes are special routes.
     PATCH /animal/${id}/add-vaccine/${vaccine_id}
     ```
 
-    | Parameter | Type     | Description                       |
-    | :-------- | :------- | :-------------------------------- |
+    | Parameter | Type     | Description                       ||
+    | :-------- | :------- | :-------------------------------- |-|
     | `id`      | `string` |  **Required**. ID of the animal for which you want to add a vaccine record | *Only admins and vets can perform this operation.* |
     | `vaccine-id`| `string` |  **Required**. ID of the vaccine you want to add | *Only admins and vets can perform this operation.* |
 
@@ -138,8 +138,8 @@ These routes are special routes.
     PATCH /treatment/${id}/add-category/${category_id}
     ```
 
-    | Parameter | Type     | Description                       |
-    | :-------- | :------- | :-------------------------------- |
+    | Parameter | Type     | Description                       ||
+    | :-------- | :------- | :-------------------------------- |-|
     | `id`      | `string` |  **Required**. ID of the treatment for which you want to add a category record| *Only admins and vets can perform this operation.* |
     | `category-id`| `string` |  **Required**. ID of category you want to add | *Only admins and vets can perform this operation.* |
 
@@ -150,8 +150,8 @@ These routes are special routes.
     PATCH /treatment/${id}/add-medicine/${medicine_id}
     ```
 
-    | Parameter | Type     | Description                       |
-    | :-------- | :------- | :-------------------------------- |
+    | Parameter | Type     | Description                       ||
+    | :-------- | :------- | :-------------------------------- |-|
     | `id`      | `string` |  **Required**. ID of the treatment for which you want to add a medicine record | *Only admins and vets can perform this operation.* |
     | `medicine-id`| `string` |  **Required**. ID of medicine you want to add | *Only admins and vets can perform this operation.* |
 
