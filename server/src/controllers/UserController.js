@@ -13,6 +13,7 @@ class UserController extends BaseController {
             req.body.password = HashPassword(req.body.password);
             UserService.read(req.body)
                 .then(response => {
+                    if (!response || !response.length) return next(ApiError.notFound());
                     req.user = response;
                     res.status(200).send(new SuccessMessage(response));
                 })

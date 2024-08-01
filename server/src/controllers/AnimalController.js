@@ -13,9 +13,11 @@ class AnimalController extends BaseController {
         return (req, res, next) => {
             AnimalService.read({ _id: req.params.id })
                 .then(animal => {
+                    if (!animal || !animal.length) return next(ApiError.notFound());
                     if (!animal.vaccines) animal["vaccines"] = [];
                     VaccineService.read(req.body)
                         .then(vaccine => {
+                            if (!vaccine || !vaccine.length) return next(ApiError.notFound());
                             if (!vaccine) {
                                 VaccineService.create(req.body)
                                     .then(newVaccine => {

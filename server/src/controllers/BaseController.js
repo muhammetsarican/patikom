@@ -22,6 +22,7 @@ class BaseController {
             this.service.read(where)
                 .then(response => {
                     if (!response || !response.length) return next(ApiError.notFound());
+                    res.status(200).send(new SuccessMessage(response));
                 })
         }
     }
