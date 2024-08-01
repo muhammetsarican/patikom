@@ -20,7 +20,7 @@ class UserRoute extends BaseRoute {
     }
 
     changeRole(Router) {
-        Router.route("/:user-id/add-role/:role-id").post(idChecker("user-id"), idChecker("role-id"), authenticate, authorizationChecker(), UserController.changeRole());
+        Router.route("/:user-id/change-role").post(idChecker("user-id"), authenticate, authorizationChecker(), validate(schemas.changeRoleValidation), UserController.changeRole());
     }
 
     indexRoutes() {
