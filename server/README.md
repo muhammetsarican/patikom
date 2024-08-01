@@ -13,108 +13,156 @@ Backend of my app, I used express js.
 ## API Reference
 
 ### Base Routes
-This routes works for all routes.
+This routes works for all routes. You have to set 'route-name' part the route path that you want to use.
 
 - #### Get:
 
-    -
-        ```http
-        GET /
-        ```
+    ```http
+    GET /<route-name>/
+    ```
 
-        | Description                |
-        | :------------------------- |
-        | **Required**. Admin |
+    | Description                |
+    | :------------------------- |
+    | *Only admins can perform this operation.*  |
 
-        Lists all records.
+    Lists all records.
 
-    -
-        ```http
-        GET /${id}
-        ```
+    ```http
+    GET /<route-name>/${id}
+    ```
 
-        | Parameter | Type     | Description                |
-        | :-------- | :------- | :------------------------- |
-        | `id` | `string` | Lists one record by the id, **Required**. Admin, Id of item to fetch |
+    | Parameter | Type     | Description                |
+    | :-------- | :------- | :------------------------- |
+    | `id` | `string` | **Required**. ID of what you want to list |
 
-        Lists one record by id.
+    Lists one record by id.
 
 - #### Post:
 
-    -
-        ```http
-        POST /
-        ```
+    ```http
+    POST /<route-name>/
+    ```
 
-        | Description                       |
-        | :-------------------------------- |
-        |  **Required**. Admin, Id of item to fetch |
+    | Description                       |
+    | :-------------------------------- |
+    | *Only admins can perform this operation.* |
 
-        Creates a record.
+    Creates a record.
 
 - #### Patch:
 
-    -
-        ```http
-        PATCH /${id}
-        ```
+    ```http
+    PATCH /<route-name>/${id}
+    ```
 
-        | Parameter | Type     | Description                       |
-        | :-------- | :------- | :-------------------------------- |
-        | `id`      | `string` | **Required**. Admin, Id of item to fetch |
+    | Parameter | Type     | Description                       |
+    | :-------- | :------- | :-------------------------------- |
+    | `id`      | `string` | **Required**. ID of what you want to update |
 
-        Updates a record by id.
+    Updates a record by id.
 
 - #### Delete:
 
-    -
-        ```http
-        DELETE /${id}
-        ```
+    ```http
+    DELETE /<route-name>/${id}
+    ```
 
-        | Parameter | Type     | Description                       |
-        | :-------- | :------- | :-------------------------------- |
-        | `id`      | `string` | **Required**. Admin, Id of item to fetch |
+    | Parameter | Type     | Description                       |
+    | :-------- | :------- | :-------------------------------- |
+    | `id`      | `string` | **Required**. ID of what you want to delete |
 
-
-        Deletes a record by id.
+    Deletes a record by id.
 
 ### User Routes
 These routes are special routes.
 - #### Post:
 
-    - 
-        ```http
-        POST /user/login
-        ```
-
-        | Description                       |
-        | :-------------------------------- |
-        |  **Required**. Admin, Id of user to fetch |
+    ```http
+    POST /user/login
+    ```
 
 
-        Provides to login the user.
+    Provides to login the user.
 
-    -
-        ```http
-        POST /user/register
-        ```
-
-        | Description                       |
-        | :-------------------------------- |
-        |  **Required**. Admin, Id of user to fetch |
+    ```http
+    POST /user/register
+    ```
 
 
-        Provides to register an user.
+    Provides to register an user.
 
-    -
-        ```http
-        POST /user/${user-id}/change-role
-        ```
+    ```http
+    POST /user/${user-id}/change-role
+    ```
 
-        | Parameter | Type     | Description                       |
-        | :-------- | :------- | :-------------------------------- |
-        | `user-id`      | `string` |  **Required**. Admin, Id of user to fetch |
+    | Parameter | Type     | Description                       |
+    | :-------- | :------- | :-------------------------------- |
+    | `user-id`| `string` |  **Required**. ID of the user whose role you want to change | *Only admins can perform this operation.* |
 
 
-        Updates the role of an user by user id.
+    Updates the role of an user by user id.
+
+### Chip Routes
+These routes are special routes. You have to enter 'chip' instead of 'route-name' at base route.
+
+### Animal Routes
+These routes are special routes.
+- #### Patch:
+
+    ```http
+    PATCH /animal/${id}/add-vaccine/${vaccine_id}
+    ```
+
+    | Parameter | Type     | Description                       |
+    | :-------- | :------- | :-------------------------------- |
+    | `id`      | `string` |  **Required**. ID of the animal for which you want to add a vaccine record | *Only admins and vets can perform this operation.* |
+    | `vaccine-id`| `string` |  **Required**. ID of the vaccine you want to add | *Only admins and vets can perform this operation.* |
+
+
+    Adds vaccine to vaccines list at animal record by vaccine id.
+
+### Folk Routes
+These routes are special routes. You have to enter 'folk' instead of 'route-name' at base route.
+
+### Genre Routes
+These routes are special routes. You have to enter 'genre' instead of 'route-name' at base route.
+
+### Pregnant Log Routes
+These routes are special routes. You have to enter 'pregnant-log' instead of 'route-name' at base route.
+
+### Treatment Routes
+These routes are special routes.
+- #### Patch:
+
+    ```http
+    PATCH /treatment/${id}/add-category/${category_id}
+    ```
+
+    | Parameter | Type     | Description                       |
+    | :-------- | :------- | :-------------------------------- |
+    | `id`      | `string` |  **Required**. ID of the treatment for which you want to add a category record| *Only admins and vets can perform this operation.* |
+    | `category-id`| `string` |  **Required**. ID of category you want to add | *Only admins and vets can perform this operation.* |
+
+
+    Adds category to categories list at treatment record by category id.
+
+    ```http
+    PATCH /treatment/${id}/add-medicine/${medicine_id}
+    ```
+
+    | Parameter | Type     | Description                       |
+    | :-------- | :------- | :-------------------------------- |
+    | `id`      | `string` |  **Required**. ID of the treatment for which you want to add a medicine record | *Only admins and vets can perform this operation.* |
+    | `medicine-id`| `string` |  **Required**. ID of medicine you want to add | *Only admins and vets can perform this operation.* |
+
+
+    Adds medicine to medicines list at treatment record by medicine id.
+
+### Category Routes
+These routes are special routes. You have to enter 'category' instead of 'route-name' at base route.
+
+### Medicine Routes
+These routes are special routes. You have to enter 'medicine' instead of 'route-name' at base route.
+
+### Vaccine Routes
+These routes are special routes. You have to enter 'vaccine' instead of 'route-name' at base route.
