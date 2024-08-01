@@ -1,4 +1,4 @@
-const ApiError = require("../Errors/ApiError");
+const ApiError = require("../errors/ApiError");
 const ErrorMessage = require("../handlers/ErrorMessage");
 const { clo } = require("../utils/CustomConsoleLog")
 

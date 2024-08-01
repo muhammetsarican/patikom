@@ -4,7 +4,7 @@ const config = require("./config");
 const { clo } = require("./utils/CustomConsoleLog");
 const { database } = require("./database");
 
-const ApiError = require("./Errors/ApiError");
+const ApiError = require("./errors/ApiError");
 const errorHandler = require("./middlewares/errorHandler");
 const { BaseRoutes } = require("./routes");
 

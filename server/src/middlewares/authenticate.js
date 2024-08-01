@@ -1,4 +1,4 @@
-const ApiError = require("../Errors/ApiError")
+const ApiError = require("../errors/ApiError")
 
 module.exports = (req, res, next) => {
     if (!req.user) return next(ApiError.notAuthenticated());

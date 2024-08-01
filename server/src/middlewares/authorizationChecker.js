@@ -1,4 +1,4 @@
-const ApiError = require("../Errors/ApiError");
+const ApiError = require("../errors/ApiError");
 
 const AuthorizationRoleMatcher = (authorizatedRole, userRole) => {
     if (userRole === "admin") return true;
