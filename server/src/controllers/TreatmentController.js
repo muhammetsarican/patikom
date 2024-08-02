@@ -5,6 +5,8 @@ const TreatmentService = require("../services/TreatmentService");
 const CategoryService = require("../services/CategoryService");
 const MedicineService = require("../services/MedicineService");
 
+const ApiError = require("../errors/ApiError");
+
 class TreatmentController extends BaseController {
     constructor() {
         super(TreatmentService);
@@ -12,13 +14,12 @@ class TreatmentController extends BaseController {
 
     addCategory() {
         return (req, res, next) => {
-            TreatmentService.read({ _id: req.params.id })
+            TreatmentService.readOne({ _id: req.params.id })
                 .then(treatment => {
-                    if (!treatment || !treatment.length) return next(ApiError.notFound());
+                    if (!treatment) return next(ApiError.listEmpty());
                     if (!treatment.categories) treatment["categories"] = [];
-                    CategoryService.read({ _id: req.params.category_id })
+                    CategoryService.readOne({ _id: req.params.category_id })
                         .then(category => {
-                            if (!category || !category.length) return next(ApiError.notFound());
                             if (!category) {
                                 CategoryService.create(req.body)
                                     .then(newCategory => {
@@ -39,13 +40,12 @@ class TreatmentController extends BaseController {
 
     addMedicine() {
         return (req, res, next) => {
-            TreatmentService.read({ _id: req.params.id })
+            TreatmentService.readOne({ _id: req.params.id })
                 .then(treatment => {
-                    if (!treatment || !treatment.length) return next(ApiError.notFound());
+                    if (!treatment) return next(ApiError.listEmpty());
                     if (!treatment.medicines) treatment["medicines"] = [];
-                    MedicineService.read({ _id: req.params.medicine_id })
+                    MedicineService.readOne({ _id: req.params.medicine_id })
                         .then(medicine => {
-                            if (!medicine || !medicine.length) return next(ApiError.notFound());
                             if (!medicine) {
                                 MedicineService.create(req.body)
                                     .then(newMedicine => {
