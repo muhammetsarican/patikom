@@ -1,6 +1,6 @@
 class SuccessMessage {
     constructor(message) {
-        this.success = false;
+        this.success = true;
         this.message = message;
     }
 }
