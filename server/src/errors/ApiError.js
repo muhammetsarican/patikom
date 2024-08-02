@@ -42,6 +42,18 @@ class ApiError extends Error {
         this.status = 400;
         return this;
     }
+
+    listEmpty() {
+        super.message = new ErrorMessage("List is empty!");
+        this.status = 404;
+        return this;
+    }
+
+    noMatchToken() {
+        super.message = new ErrorMessage("No user matched this token!");
+        this.status = 404;
+        return this;
+    }
 }
 
 module.exports = new ApiError();
