@@ -7,7 +7,7 @@ const createValidation = yup.object({
 })
 
 const updateValidation = yup.object({
-    animal_id: yup.string().required(),
+    animal_id: yup.string(),
     pregnant_date: yup.date(),
     is_completed: yup.boolean()
 })
