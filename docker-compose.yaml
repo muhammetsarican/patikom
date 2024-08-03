@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  db:
+    image: mongo:latest
+    container_name: patikom_db
+    env_file:
+      - ./.env
+    ports:
+      - 27017:${DB_PORT}
+    volumes:
+      - data:/Docker/data/db/
+    networks:
+      - patikom
+
+  server:
+    build: ./server/
+    container_name: patikom_server
+    env_file:
+      - ./.env
+    ports:
+      - 3000:${SERVER_PORT}
+    environment:
+      - DB_HOST=db
+    networks:
+      - patikom
+
+volumes:
+  data:
+
+
+networks:
+  patikom:
+    driver: bridge
