@@ -15,29 +15,7 @@ I'm doing my internship at [SmartICT](https://www.smartict.com.tr/). I started a
 
 ## 🔢 Environment Variables
 
-- #### Base directory
-
-    To run this project, you will need to add the following environment variables to your ./server.env file
-
-    `DB_HOST`,
-    `DB_PORT`,
-    `SERVER_PORT`
-
-- #### Server directory
-
-    To run this project, you will need to add the following environment variables to your ./server.env file
-
-    `NODE_ENV`,
-    `APP_HOST`,
-    `APP_PORT`,
-    `DB_HOST`,
-    `DB_PORT`,
-    `DB_NAME`,
-    `PASSWORD_KEY`,
-    `ACCESS_TOKEN_SECRET_KEY`,
-    `REFRESH_TOKEN_SECRET_KEY`
-
-
+To run this project you will need to add variables to the environment files under the base directory and the server directory. If you check you will see '*.env.example*' files. After editing these files, don't forget to change the name to '*.env*'.
 ## 🚀 Run Locally
 
 Clone the project
@@ -76,9 +54,8 @@ Run the dockerfile
     - I better understood how to express works and how to use json web token.
     - I realized the importance of error handling.
     - I learned how to create better commits and run my application in docker.
+    - I realized importance of planning and I gained experience in using Trello.
     - Lastly, I reinforced the information about the backend nicely.
-
-
 
 ## 🖋️ Authors
 
