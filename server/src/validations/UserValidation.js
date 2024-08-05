@@ -23,12 +23,17 @@ const registerValidation = yup.object({
     fname: yup.string().min(3),
     lname: yup.string().min(3),
     mail: yup.string().email().required(),
-    password: yup.string().min(8),
+    password: yup.string().min(8).required(),
 })
 
-module.exports.schemas = {
+const changeRoleValidation = yup.object({
+    name: yup.string().required()
+})
+
+module.exports = {
     createValidation,
     updateValidation,
     loginValidation,
-    registerValidation
+    registerValidation,
+    changeRoleValidation
 }

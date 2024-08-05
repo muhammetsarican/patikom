@@ -1,6 +1,8 @@
 class CustomConsoleLog {
     g(...args) {
-        process.env.NODE_ENV === "development" && console.log(JSON.stringify(args) || args.toString());
+        args = args.map(arg => typeof (arg) == "object" ? JSON.stringify(arg) : arg);
+
+        process.env.NODE_ENV === "development" && console.log(args.join(" "));
     }
 }
 

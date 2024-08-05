@@ -5,6 +5,8 @@ const TreatmentService = require("../services/TreatmentService");
 const CategoryService = require("../services/CategoryService");
 const MedicineService = require("../services/MedicineService");
 
+const ApiError = require("../errors/ApiError");
+
 class TreatmentController extends BaseController {
     constructor() {
         super(TreatmentService);
@@ -12,10 +14,11 @@ class TreatmentController extends BaseController {
 
     addCategory() {
         return (req, res, next) => {
-            TreatmentService.read({ _id: req.params.id })
+            TreatmentService.readOne({ _id: req.params.id })
                 .then(treatment => {
+                    if (!treatment) return next(ApiError.listEmpty());
                     if (!treatment.categories) treatment["categories"] = [];
-                    CategoryService.read(req.body)
+                    CategoryService.readOne({ _id: req.params.category_id })
                         .then(category => {
                             if (!category) {
                                 CategoryService.create(req.body)
@@ -37,10 +40,11 @@ class TreatmentController extends BaseController {
 
     addMedicine() {
         return (req, res, next) => {
-            TreatmentService.read({ _id: req.params.id })
+            TreatmentService.readOne({ _id: req.params.id })
                 .then(treatment => {
+                    if (!treatment) return next(ApiError.listEmpty());
                     if (!treatment.medicines) treatment["medicines"] = [];
-                    MedicineService.read(req.body)
+                    MedicineService.readOne({ _id: req.params.medicine_id })
                         .then(medicine => {
                             if (!medicine) {
                                 MedicineService.create(req.body)

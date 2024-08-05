@@ -1,19 +1,55 @@
 const BaseController = require("./BaseController");
+
 const UserService = require("../services/UserService");
-const SuccessMessage = require("../handlers/SuccessMessage");
+
 const HashPassword = require("../helpers/HashPassword");
+
+const SuccessMessage = require("../handlers/SuccessMessage");
+const ApiError = require("../errors/ApiError");
+const { createAccessToken, createRefreshToken } = require("../helpers/jwt");
 
 class UserController extends BaseController {
     constructor() {
         super(UserService);
     }
 
+    newRecord() {
+        return (req, res, next) => {
+            if (req.body.password) req.body.password = HashPassword(req.body.password);
+            req.body.role = "user";
+            req.body.status = "true";
+            UserService.create(req.body)
+                .then(response => {
+                    res.status(201).send(new SuccessMessage(response));
+                })
+        }
+    }
+
+    updateOne() {
+        return (req, res, next) => {
+            if (req.body.password) req.body.password = HashPassword(req.body.password);
+            UserService.update(req.params.id, req.body)
+                .then(response => {
+                    res.status(200).send(new SuccessMessage(response));
+                })
+        }
+    }
+
     login() {
         return (req, res, next) => {
             req.body.password = HashPassword(req.body.password);
-            UserService.read(req.body)
-                .then(response => {
-                    req.user = response;
+            UserService.readOne(req.body)
+                .then(user => {
+                    if (!user) return next(ApiError.listEmpty());
+                    const tokens = {
+                        access_token: createAccessToken(user),
+                        refresh_token: createRefreshToken(user)
+                    }
+                    const response = {
+                        user,
+                        tokens
+                    }
+
                     res.status(200).send(new SuccessMessage(response));
                 })
         }
@@ -22,9 +58,19 @@ class UserController extends BaseController {
     register() {
         return (req, res, next) => {
             req.body.password = HashPassword(req.body.password);
+            req.body.role = "user";
+            req.body.status = "true";
             UserService.create(req.body)
-                .then(response => {
-                    req.user = response;
+                .then(user => {
+                    const tokens = {
+                        access_token: createAccessToken(user),
+                        refresh_token: createRefreshToken(user)
+                    }
+                    const response = {
+                        user,
+                        tokens
+                    }
+
                     res.status(201).send(new SuccessMessage(response));
                 })
         }
@@ -32,7 +78,7 @@ class UserController extends BaseController {
 
     changeRole() {
         return (req, res, next) => {
-            UserService.update(req.params.user_id, req.body.role)
+            UserService.update(req.params.user_id, req.body)
                 .then(response => {
                     res.status(200).send(new SuccessMessage(response));
                 })

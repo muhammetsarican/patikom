@@ -1,4 +1,4 @@
-const ApiError = require("../Errors/ApiError");
+const ApiError = require("../errors/ApiError");
 const SuccessMessage = require("../handlers/SuccessMessage");
 
 class BaseController {
@@ -16,21 +16,23 @@ class BaseController {
         }
     }
 
-    listOne(where) {
+    listOne() {
         return (req, res, next) => {
-            where.status = "true";
-            this.service.read(where)
+            const { id } = req.params;
+            this.service.readOne({ _id: id })
                 .then(response => {
-                    if (!response || !response.length) return next(ApiError.notFound());
+                    if (!response) return next(ApiError.notFound());
+                    res.status(200).send(new SuccessMessage(response));
                 })
         }
     }
 
-    listAll(status = "true") {
+    listAll() {
         return (req, res, next) => {
-            this.service.read({ status })
+            this.service.read()
                 .then(response => {
-                    if (!response || !response.length) return next(ApiError.notFound());
+                    if (!response) return next(ApiError.notFound());
+                    if (!response.length) return next(ApiError.listEmpty());
                     res.status(200).send(new SuccessMessage(response));
                 })
         }
@@ -49,6 +51,7 @@ class BaseController {
         return (req, res, next) => {
             this.service.delete(req.params.id)
                 .then(response => {
+                    if (!response) return next(ApiError.notFound());
                     res.status(200).send(new SuccessMessage(response));
                 })
         }

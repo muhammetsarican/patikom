@@ -4,6 +4,8 @@ const SuccessMessage = require("../handlers/SuccessMessage");
 const AnimalService = require("../services/AnimalService");
 const VaccineService = require("../services/VaccineService");
 
+const ApiError = require("../errors/ApiError");
+
 class AnimalController extends BaseController {
     constructor() {
         super(AnimalService);
@@ -11,10 +13,11 @@ class AnimalController extends BaseController {
 
     addVaccine() {
         return (req, res, next) => {
-            AnimalService.read({ _id: req.params.id })
+            AnimalService.readOne({ _id: req.params.id })
                 .then(animal => {
+                    if (!animal) return next(ApiError.listEmpty());
                     if (!animal.vaccines) animal["vaccines"] = [];
-                    VaccineService.read(req.body)
+                    VaccineService.readOne({ _id: req.params.vaccine_id })
                         .then(vaccine => {
                             if (!vaccine) {
                                 VaccineService.create(req.body)

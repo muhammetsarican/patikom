@@ -7,6 +7,10 @@ class BaseService {
         return this.model(data).save();
     }
 
+    readOne(where) {
+        return this.model.findOne(where);
+    }
+
     read(where = {}) {
         return this.model.find(where);
     }
