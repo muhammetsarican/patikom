@@ -54,6 +54,12 @@ class ApiError extends Error {
         this.status = 404;
         return this;
     }
+
+    badInformations() {
+        super.message = new ErrorMessage("Mail or password is wrong!");
+        this.status = 400;
+        return this;
+    }
 }
 
 module.exports = new ApiError();
