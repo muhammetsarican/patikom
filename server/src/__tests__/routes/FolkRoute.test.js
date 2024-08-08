@@ -34,7 +34,7 @@ describe("/folk", () => {
                 customExpect(res).toBeUnauthorized();
             })
             test("with authorized token", async () => {
-                const res = await request(app).get("/folk").set("authorization", `Bearer ${users.admin.tokens.access_token}`)
+                const res = await request(app).get("/folk").set("authorization", `Bearer ${users.vet.tokens.access_token}`)
 
                 customExpect(res).toBeOk();
             })
@@ -50,13 +50,18 @@ describe("/folk", () => {
 
                 customExpect(res).toBeBadRequest();
             })
-            test("if folk not exist", async () => {
+            test("with unauthorized token", async () => {
                 const res = await request(app).get(`/folk/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);;
+
+                customExpect(res).toBeUnauthorized();
+            })
+            test("if folk not exist", async () => {
+                const res = await request(app).get(`/folk/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${users.vet.tokens.access_token}`);;
 
                 customExpect(res).toBeNotFound();
             })
             test("if all correct", async () => {
-                const res = await request(app).get(`/folk/${folk._id}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);;
+                const res = await request(app).get(`/folk/${folk._id}`).set("authorization", `Bearer ${users.vet.tokens.access_token}`);;
 
                 customExpect(res).toBeOk();
             })
@@ -70,8 +75,13 @@ describe("/folk", () => {
 
                 customExpect(res).toBeForbidden();
             })
-            test("with no info", async () => {
+            test("with unauthorized token", async () => {
                 const res = await request(app).post(`/folk`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
+
+                customExpect(res).toBeUnauthorized();
+            })
+            test("with no info", async () => {
+                const res = await request(app).post(`/folk`).set("authorization", `Bearer ${users.vet.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest();
             })
@@ -79,7 +89,7 @@ describe("/folk", () => {
                 const res = await request(app).post(`/folk`).send({
                     genre_id: new mongoose.Types.ObjectId(),
                     name: "Golden Retriever"
-                }).set("authorization", `Bearer ${users.default.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.vet.tokens.access_token}`);
 
                 customExpect(res).toBeCreated();
             })
@@ -97,13 +107,18 @@ describe("/folk", () => {
 
                 customExpect(res).toBeBadRequest()
             })
+            test("with unauthorized token", async () => {
+                const res = await request(app).patch(`/folk/${folk._id}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
+
+                customExpect(res).toBeUnauthorized()
+            })
             test("with not recorded id", async () => {
-                const res = await request(app).patch(`/folk/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
+                const res = await request(app).patch(`/folk/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${users.vet.tokens.access_token}`);
 
                 customExpect(res).toBeNotFound()
             })
             test("with no info", async () => {
-                const res = await request(app).patch(`/folk/${folk._id}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
+                const res = await request(app).patch(`/folk/${folk._id}`).set("authorization", `Bearer ${users.vet.tokens.access_token}`);
 
                 customExpect(res).toBeOk()
             })
@@ -121,13 +136,18 @@ describe("/folk", () => {
 
                 customExpect(res).toBeBadRequest()
             })
+            test("with unauthorized token", async () => {
+                const res = await request(app).delete(`/folk/${folk._id}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
+
+                customExpect(res).toBeUnauthorized()
+            })
             test("with not recorded id", async () => {
-                const res = await request(app).delete(`/folk/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
+                const res = await request(app).delete(`/folk/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${users.vet.tokens.access_token}`);
 
                 customExpect(res).toBeNotFound()
             })
             test("all things are correct", async () => {
-                const res = await request(app).delete(`/folk/${folk._id}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
+                const res = await request(app).delete(`/folk/${folk._id}`).set("authorization", `Bearer ${users.vet.tokens.access_token}`);
 
                 customExpect(res).toBeOk()
             })
