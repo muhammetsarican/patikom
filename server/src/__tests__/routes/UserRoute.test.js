@@ -3,25 +3,15 @@ const app = require("../../app.js");
 const { default: mongoose } = require("mongoose");
 
 const customExpect = require("../../../.jest/CustomExpect.js");
-const CreateTestData = require("../../../.jest/CreateTestData.js");
+const createTestUser = require("../../../.jest/CreateTestData/CreateTestUser.js");
 
-const user = {
-    default: null,
-    vet: null,
-    admin: null
-}
+let users;
 
 describe("/user", () => {
     beforeAll(async () => {
-        await CreateTestData.init();
+        await createTestUser.init();
 
-        const def = await CreateTestData.user();
-        const vet = await CreateTestData.vet();
-        const admin = await CreateTestData.admin();
-
-        user.default = def;
-        user.vet = vet;
-        user.admin = admin;
+        users = await createTestUser.saveTestUsers();
     })
 
     afterAll(() => {
@@ -36,34 +26,34 @@ describe("/user", () => {
                 customExpect(res).toBeForbidden();
             })
             test("with not authorized token", async () => {
-                const res = await request(app).get("/user").set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                const res = await request(app).get("/user").set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeUnauthorized();
             })
             test("with authorized token", async () => {
-                const res = await request(app).get("/user").set("authorization", `Bearer ${user.admin.tokens.access_token}`);
+                const res = await request(app).get("/user").set("authorization", `Bearer ${users.admin.tokens.access_token}`);
 
                 customExpect(res).toBeOk();
             })
         })
         describe("/:id", () => {
             test("without token", async () => {
-                const res = await request(app).get(`/user/${user.default.user._id}`);
+                const res = await request(app).get(`/user/${users.default.user._id}`);
 
                 customExpect(res).toBeForbidden();
             })
             test("with invalid id", async () => {
-                const res = await request(app).get(`/user/${user.default.user._id}z`).set("authorization", `Bearer ${user.default.tokens.access_token}`);;
+                const res = await request(app).get(`/user/${users.default.user._id}z`).set("authorization", `Bearer ${users.default.tokens.access_token}`);;
 
                 customExpect(res).toBeBadRequest();
             })
             test("if user not exist", async () => {
-                const res = await request(app).get(`/user/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${user.default.tokens.access_token}`);;
+                const res = await request(app).get(`/user/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);;
 
                 customExpect(res).toBeNotFound();
             })
             test("if all parameters are true", async () => {
-                const res = await request(app).get(`/user/${user.default.user._id}`).set("authorization", `Bearer ${user.default.tokens.access_token}`);;
+                const res = await request(app).get(`/user/${users.default.user._id}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);;
 
                 customExpect(res).toBeOk();
             })
@@ -83,27 +73,27 @@ describe("/user", () => {
                 const res = await request(app).post("/user").send({
                     mail: "test_user@gmail.com",
                     password: "test_password"
-                }).set("authorization", `Bearer ${user.default.tokens.access_token}`);;
+                }).set("authorization", `Bearer ${users.default.tokens.access_token}`);;
 
                 customExpect(res).toBeUnauthorized();
             })
 
             test("with no info", async () => {
-                const res = await request(app).post("/user").set("authorization", `Bearer ${user.admin.tokens.access_token}`);
+                const res = await request(app).post("/user").set("authorization", `Bearer ${users.admin.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest();
             })
             test("if password missing", async () => {
                 const res = await request(app).post("/user").send({
                     mail: "test_user@gmail.com",
-                }).set("authorization", `Bearer ${user.admin.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.admin.tokens.access_token}`);
 
                 customExpect(res).toBeCreated();
             })
             test("if mail missing", async () => {
                 const res = await request(app).post("/user").send({
                     password: "test_password",
-                }).set("authorization", `Bearer ${user.admin.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.admin.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest();
             })
@@ -111,7 +101,7 @@ describe("/user", () => {
                 const res = await request(app).post("/user").send({
                     mail: "test@gmail",
                     password: "test_password",
-                }).set("authorization", `Bearer ${user.admin.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.admin.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest();
             })
@@ -119,7 +109,7 @@ describe("/user", () => {
                 const res = await request(app).post("/user").send({
                     mail: "test_user@gmail.com",
                     password: "test123",
-                }).set("authorization", `Bearer ${user.admin.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.admin.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest();
             })
@@ -127,7 +117,7 @@ describe("/user", () => {
                 const res = await request(app).post("/user").send({
                     mail: "test_user@gmail.com",
                     password: "test_password",
-                }).set("authorization", `Bearer ${user.admin.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.admin.tokens.access_token}`);
 
                 customExpect(res).toBeCreated();
             })
@@ -136,14 +126,14 @@ describe("/user", () => {
             test("if password missing", async () => {
                 const res = await request(app).post("/user/login").send({
                     mail: "test_user@gmail.com",
-                }).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest();
             })
             test("if mail missing", async () => {
                 const res = await request(app).post("/user/login").send({
                     password: "test_password",
-                }).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest();
             })
@@ -167,7 +157,7 @@ describe("/user", () => {
                 const res = await request(app).post("/user/login").send({
                     mail: "test@gmail",
                     password: "test_password",
-                }).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest();
             })
@@ -175,7 +165,7 @@ describe("/user", () => {
                 const res = await request(app).post("/user/login").send({
                     mail: "test_user@gmail.com",
                     password: "test123",
-                }).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest();
             })
@@ -183,7 +173,7 @@ describe("/user", () => {
                 const res = await request(app).post("/user/login").send({
                     mail: "test_user@gmail.com",
                     password: "test_password",
-                }).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeOk();
             })
@@ -236,38 +226,38 @@ describe("/user", () => {
         })
         describe("/:id/change-role", () => {
             test("with no token", async () => {
-                const res = await request(app).post(`/user/${user.default.user._id}/change-role`);
+                const res = await request(app).post(`/user/${users.default.user._id}/change-role`);
 
                 customExpect(res).toBeForbidden();
             })
             test("with invalid id", async () => {
-                const res = await request(app).post(`/user/${user.default.user._id}z/change-role`).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                const res = await request(app).post(`/user/${users.default.user._id}z/change-role`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest()
             })
             test("with no info", async () => {
-                const res = await request(app).post(`/user/${user.default.user._id}/change-role`).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                const res = await request(app).post(`/user/${users.default.user._id}/change-role`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest()
             })
             test("with not recorded id", async () => {
                 const res = await request(app).post(`/user/${new mongoose.Types.ObjectId()}/change-role`).send({
                     name: "vet"
-                }).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeNotFound()
             })
             test("with incorrect value", async () => {
-                const res = await request(app).post(`/user/${user.default.user._id}/change-role`).send({
+                const res = await request(app).post(`/user/${users.default.user._id}/change-role`).send({
                     title: "vet"
-                }).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest()
             })
             test("all correct", async () => {
-                const res = await request(app).post(`/user/${user.default.user._id}/change-role`).send({
+                const res = await request(app).post(`/user/${users.default.user._id}/change-role`).send({
                     name: "vet"
-                }).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                }).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeOk()
             })
@@ -276,22 +266,22 @@ describe("/user", () => {
     describe("PATCH", () => {
         describe("/:id", () => {
             test("with no token", async () => {
-                const res = await request(app).patch(`/user/${user.default.user._id}`);
+                const res = await request(app).patch(`/user/${users.default.user._id}`);
 
                 customExpect(res).toBeForbidden();
             })
             test("with invalid id", async () => {
-                const res = await request(app).patch(`/user/${user.default.user._id}z`).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                const res = await request(app).patch(`/user/${users.default.user._id}z`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest()
             })
             test("with not recorded id", async () => {
-                const res = await request(app).patch(`/user/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                const res = await request(app).patch(`/user/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeNotFound()
             })
-            test("with no info", async () => {
-                const res = await request(app).patch(`/user/${user.default.user._id}`).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+            test("all things are correct", async () => {
+                const res = await request(app).patch(`/user/${users.default.user._id}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeOk()
             })
@@ -300,22 +290,22 @@ describe("/user", () => {
     describe("DELETE", () => {
         describe("/:id", () => {
             test("with no token", async () => {
-                const res = await request(app).delete(`/user/${user.default.user._id}`);
+                const res = await request(app).delete(`/user/${users.default.user._id}`);
 
                 customExpect(res).toBeForbidden();
             })
             test("with invalid id", async () => {
-                const res = await request(app).delete(`/user/${user.default.user._id}z`).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                const res = await request(app).delete(`/user/${users.default.user._id}z`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest()
             })
             test("with not recorded id", async () => {
-                const res = await request(app).delete(`/user/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+                const res = await request(app).delete(`/user/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeNotFound()
             })
-            test("with no info", async () => {
-                const res = await request(app).delete(`/user/${user.default.user._id}`).set("authorization", `Bearer ${user.default.tokens.access_token}`);
+            test("all things are correct", async () => {
+                const res = await request(app).delete(`/user/${users.default.user._id}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeOk()
             })
