@@ -5,7 +5,7 @@ const createValidation = yup.object({
 })
 
 const updateValidation = yup.object({
-    name: yup.string().required()
+    name: yup.string()
 })
 
 module.exports = {
