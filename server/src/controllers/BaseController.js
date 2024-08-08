@@ -42,6 +42,7 @@ class BaseController {
         return (req, res, next) => {
             this.service.update(req.params.id, req.body)
                 .then(response => {
+                    if (!response) return next(ApiError.notFound());
                     res.status(200).send(new SuccessMessage(response));
                 })
         }

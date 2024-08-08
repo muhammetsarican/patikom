@@ -8,6 +8,10 @@ class ChipRoute extends BaseRoute {
     constructor() {
         super(ChipController, schemas);
     }
+    indexRoutes() {
+        super.listAll("vet");
+        return super.indexRoutes();
+    }
 }
 
 module.exports = new ChipRoute();
