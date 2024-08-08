@@ -34,7 +34,7 @@ describe("/genre", () => {
                 customExpect(res).toBeUnauthorized();
             })
             test("with authorized token", async () => {
-                const res = await request(app).get("/genre").set("authorization", `Bearer ${users.admin.tokens.access_token}`)
+                const res = await request(app).get("/genre").set("authorization", `Bearer ${users.vet.tokens.access_token}`)
 
                 customExpect(res).toBeOk();
             })
