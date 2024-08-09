@@ -4,11 +4,14 @@ const { default: mongoose } = require("mongoose");
 const customExpect = require("../../../.jest/CustomExpect.js");
 const createTestUser = require("../../../.jest/CreateTestData/CreateTestUser.js");
 const createTestCategory = require("../../../.jest/CreateTestData/CreateTestCategory.js");
+const DbConnect = require("../../../.jest/dbConnection.js");
 
 let category, users;
+const dbConnect = new DbConnect();
 
 describe("/category", () => {
     beforeAll(async () => {
+        await dbConnect.connect();
         await createTestUser.init();
         await createTestCategory.init();
 
@@ -18,7 +21,7 @@ describe("/category", () => {
     })
 
     afterAll(() => {
-        mongoose.connection.close();
+        dbConnect.close();
     })
 
     describe("GET", () => {

@@ -5,11 +5,14 @@ const customExpect = require("../../../.jest/CustomExpect.js");
 const createTestUser = require("../../../.jest/CreateTestData/CreateTestUser.js");
 const createTestChip = require("../../../.jest/CreateTestData/CreateTestChip.js");
 const createTestAnimal = require("../../../.jest/CreateTestData/CreateTestAnimal.js");
+const DbConnect = require("../../../.jest/dbConnection.js");
 
 let animal, users;
+const dbConnect = new DbConnect();
 
 describe("/animal", () => {
     beforeAll(async () => {
+        await dbConnect.connect();
         await createTestUser.init();
         await createTestAnimal.init();
 
@@ -19,7 +22,7 @@ describe("/animal", () => {
     })
 
     afterAll(() => {
-        mongoose.connection.close();
+        dbConnect.close();
     })
 
     describe("GET", () => {

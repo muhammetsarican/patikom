@@ -4,11 +4,14 @@ const { default: mongoose } = require("mongoose");
 const customExpect = require("../../../.jest/CustomExpect.js");
 const createTestUser = require("../../../.jest/CreateTestData/CreateTestUser.js");
 const createTestPregnantLog = require("../../../.jest/CreateTestData/CreateTestPregnantLog.js");
+const DbConnect = require("../../../.jest/dbConnection.js");
 
 let pregnantLog, users;
+const dbConnect = new DbConnect();
 
 describe("/pregnant-log", () => {
     beforeAll(async () => {
+        await dbConnect.connect();
         await createTestUser.init();
         await createTestPregnantLog.init();
 
@@ -18,7 +21,7 @@ describe("/pregnant-log", () => {
     })
 
     afterAll(() => {
-        mongoose.connection.close();
+        dbConnect.close();
     })
 
     describe("GET", () => {
