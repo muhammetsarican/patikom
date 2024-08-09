@@ -42,6 +42,18 @@ Run the dockerfile
   docker-compose up --build
 ```
 
+- For hide the logs, run this
+
+  ```bash
+    docker-compose up -d --build
+  ```
+
+- For stop containers, run this
+
+  ```bash
+    docker stop patikom_{db,server}
+  ```
+
 #### At last go the port which you set at .env file in base dir, Congratulations 🎉
 ## 📈 Weekly Progress
 
