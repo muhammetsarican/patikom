@@ -5,7 +5,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const config = require("./config");
-const { database } = require("./database");
 
 const ApiError = require("./errors/ApiError");
 const errorHandler = require("./middlewares/errorHandler");
@@ -14,7 +13,6 @@ const { BaseRoutes } = require("./routes");
 
 // loaders
 config();
-database();
 
 // app initial
 const app = express();
