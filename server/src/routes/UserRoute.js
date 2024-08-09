@@ -26,6 +26,7 @@ class UserRoute extends BaseRoute {
     }
 
     indexRoutes() {
+        super.newRecord("admin");
         this.router = super.indexRoutes();
         this.login(this.router);
         this.register(this.router);

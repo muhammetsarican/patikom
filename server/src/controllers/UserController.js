@@ -30,6 +30,7 @@ class UserController extends BaseController {
             if (req.body.password) req.body.password = HashPassword(req.body.password);
             UserService.update(req.params.id, req.body)
                 .then(response => {
+                    if (!response) return next(ApiError.notFound());
                     res.status(200).send(new SuccessMessage(response));
                 })
         }
@@ -40,10 +41,10 @@ class UserController extends BaseController {
             req.body.password = HashPassword(req.body.password);
             UserService.readOne(req.body)
                 .then(user => {
-                    if (!user) return next(ApiError.listEmpty());
+                    if (!user) return next(ApiError.badInformations());
                     const tokens = {
-                        access_token: createAccessToken(user),
-                        refresh_token: createRefreshToken(user)
+                        access_token: createAccessToken(user.toJSON()),
+                        refresh_token: createRefreshToken(user.toJSON())
                     }
                     const response = {
                         user,
@@ -63,8 +64,8 @@ class UserController extends BaseController {
             UserService.create(req.body)
                 .then(user => {
                     const tokens = {
-                        access_token: createAccessToken(user),
-                        refresh_token: createRefreshToken(user)
+                        access_token: createAccessToken(user.toJSON()),
+                        refresh_token: createRefreshToken(user.toJSON())
                     }
                     const response = {
                         user,
@@ -80,6 +81,7 @@ class UserController extends BaseController {
         return (req, res, next) => {
             UserService.update(req.params.user_id, req.body)
                 .then(response => {
+                    if (!response) return next(ApiError.notFound())
                     res.status(200).send(new SuccessMessage(response));
                 })
         }

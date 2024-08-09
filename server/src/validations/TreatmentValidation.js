@@ -1,7 +1,7 @@
 const yup = require("yup");
 
 const createValidation = yup.object({
-    title: yup.string(),
+    title: yup.string().required(),
     keyword: yup.string(),
     description: yup.string(),
     categories: yup.array().default([]),
@@ -23,7 +23,7 @@ const addCategoryValidation = yup.object({
 })
 
 const addMedicineValidation = yup.object({
-    title: yup.string().required(),
+    name: yup.string().required(),
     keyword: yup.string(),
     description: yup.string()
 })

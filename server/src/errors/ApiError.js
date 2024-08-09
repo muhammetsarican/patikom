@@ -20,7 +20,7 @@ class ApiError extends Error {
         return this;
     }
     forbidden() {
-        super.message = new ErrorMessage("Forbidded!");
+        super.message = new ErrorMessage("Forbidden!");
         this.status = 403;
         return this;
     }
@@ -52,6 +52,12 @@ class ApiError extends Error {
     noMatchToken() {
         super.message = new ErrorMessage("No user matched this token!");
         this.status = 404;
+        return this;
+    }
+
+    badInformations() {
+        super.message = new ErrorMessage("Mail or password is wrong!");
+        this.status = 400;
         return this;
     }
 }

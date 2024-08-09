@@ -16,7 +16,7 @@ class TreatmentController extends BaseController {
         return (req, res, next) => {
             TreatmentService.readOne({ _id: req.params.id })
                 .then(treatment => {
-                    if (!treatment) return next(ApiError.listEmpty());
+                    if (!treatment) return next(ApiError.notFound());
                     if (!treatment.categories) treatment["categories"] = [];
                     CategoryService.readOne({ _id: req.params.category_id })
                         .then(category => {
@@ -42,7 +42,7 @@ class TreatmentController extends BaseController {
         return (req, res, next) => {
             TreatmentService.readOne({ _id: req.params.id })
                 .then(treatment => {
-                    if (!treatment) return next(ApiError.listEmpty());
+                    if (!treatment) return next(ApiError.notFound());
                     if (!treatment.medicines) treatment["medicines"] = [];
                     MedicineService.readOne({ _id: req.params.medicine_id })
                         .then(medicine => {

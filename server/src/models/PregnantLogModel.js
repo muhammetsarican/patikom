@@ -5,10 +5,7 @@ const PregnantLogSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "animal"
     },
-    pregnant_date: {
-        type: Date,
-        required: true
-    },
+    pregnant_date: Date,
     is_completed: Boolean,
     status: String
 }, {

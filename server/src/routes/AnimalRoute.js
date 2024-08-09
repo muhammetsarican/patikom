@@ -6,6 +6,7 @@ const schemas = require("../validations/AnimalValidation");
 const idChecker = require("../middlewares/idChecker");
 const authenticate = require("../middlewares/authenticate");
 const authorizationChecker = require("../middlewares/authorizationChecker");
+const validate = require("../middlewares/validateSchema");
 
 class AnimalRoute extends BaseRoute {
     constructor() {
@@ -13,7 +14,7 @@ class AnimalRoute extends BaseRoute {
     }
 
     addVaccine(Router) {
-        Router.route("/:id/add-vaccine/:vaccine_id").patch(idChecker(), idChecker("vaccine_id"), authenticate, authorizationChecker(), AnimalController.addVaccine());
+        Router.route("/:id/add-vaccine/:vaccine_id").patch(idChecker(), idChecker("vaccine_id"), authenticate, authorizationChecker("vet"), validate(schemas.addVaccineValidation), AnimalController.addVaccine());
     }
 
     indexRoutes() {
