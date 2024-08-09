@@ -20,7 +20,7 @@ class ApiError extends Error {
         return this;
     }
     forbidden() {
-        super.message = new ErrorMessage("Forbidded!");
+        super.message = new ErrorMessage("Forbidden!");
         this.status = 403;
         return this;
     }
