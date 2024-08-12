@@ -54,6 +54,12 @@ Run the dockerfile
     docker stop patikom_{db,server}
   ```
 
+- For showing logs, run this
+
+  ```bash
+    docker-compose logs
+  ```
+
 #### At last go the port which you set at .env file in base dir, Congratulations 🎉
 ## 📈 Weekly Progress
 
