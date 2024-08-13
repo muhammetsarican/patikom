@@ -17,7 +17,6 @@ module.exports = {
     extend: {
       colors: {
         primary: "#FFA500",
-        "primary-transparent": 'rgba(var(#FFA500), 0.9)',
         accent: "#FFD700",
         background: "#DCDCDC",
         secondary: "#F08080",
