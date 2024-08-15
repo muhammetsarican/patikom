@@ -129,11 +129,11 @@
         <!-- content - start -->
         <div id="content" class="flex flex-col font-nunito">
             <!-- title banner - start -->
-            <div id="title-banner" class="relative bg-primary w-full h-fit">
-                <img class="w-full object-cover object-center h-80" src="../assets/images/animal/title-banner.png"
-                    alt="">
+            <div id="title-banner" class="relative bg-background w-full h-fit">
+                <img class="w-full object-cover object-[0,-450px] h-80"
+                    src="../assets/images/treatment-log/title-banner.png" alt="">
                 <p class="absolute w-full text-center inset-y-[45%] font-sora text-5xl text-off-white-text z-20">
-                    Hayvan İşlemleri
+                    Gebelik Takibi
                 </p>
                 <span id="fligree" class="absolute top-0 w-full h-full bg-gray-900/50 z-10"></span>
             </div>
@@ -179,9 +179,8 @@
                     <!-- operation menu - end -->
                     <!-- operation page - start -->
                     <div id="operation-page" class="w-full">
-                        <!-- list record - start -->
                         <div id="table"
-                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full">
+                            class="flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full">
                             <div id="header"
                                 class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
                                 <div id="header-title" class="flex gap-3 items-center">
@@ -198,7 +197,7 @@
                                             <path d="M14 20h7" />
                                         </svg>
                                     </span>
-                                    <h1 class="font-sora text-lg sm:text-xl">Hayvanlarım / Kayıt Listesi</h1>
+                                    <h1 class="font-sora text-lg sm:text-xl">Gebelik Takibi / Kayıt Listesi</h1>
                                 </div>
                                 <div id="create-record-button">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -442,201 +441,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- list record - end -->
-                        <!-- create record - start -->
-                        <div id="form"
-                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full">
-                            <div id="header"
-                                class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
-                                <div id="header-title" class="flex gap-3 items-center h-9 py-1">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-file-plus-2 w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300 w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300">
-                                            <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4" />
-                                            <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                                            <path d="M3 15h6" />
-                                            <path d="M6 12v6" />
-                                        </svg>
-                                    </span>
-                                    <h1 class="font-sora text-lg sm:text-xl">Hayvanlarım / Yeni Kayıt</h1>
-                                </div>
-                            </div>
-                            <div class="px-6 h-full">
-                                <div class="rounded-lg overflow-hidden h-full">
-                                    <form action=""
-                                        class="flex flex-col justify-between gap-3 p-3 w-full h-full text-xs text-tertiary">
-                                        <div class="grid grid-cols-2 gap-3 h-fit">
-                                            <input type="text" placeholder="Enter Earring No."
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                            <input type="text" placeholder="Enter name"
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                            <input id="date-picker" type="text" placeholder="Enter birth date"
-                                                onfocus="(this.type='date')" onblur="(this.type='text')"
-                                                class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                            <select
-                                                class="border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary"
-                                                name="" id="">
-                                                <option value="0" class="text-gray-400">Select the genre</option>
-                                            </select>
-                                            <select name="" id=""
-                                                class="border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                <option value="0">Both exist</option>
-                                                <option value="1">One dropped</option>
-                                                <option value="2">Both dropped</option>
-                                            </select>
-                                            <div id="gender"
-                                                class="flex gap-3 self-end justify-end items-center px-8 py-4 border border-slate-200 rounded-xl text-slate-400">
-                                                <p class="text-sm font-bold">Gender:</p>
-                                                <div class="flex gap-1 items-center w-fit px-3 h-full">
-                                                    <input class="w-6 h-6 border-0 accent-tertiary" type="radio"
-                                                        name="gender" id="gender">
-                                                    <label for=" gender" class="text-xs">Male</label>
-                                                </div>
-                                                <div class="flex gap-1 items-center w-fit px-3 h-full">
-                                                    <input class="w-6 h-6 border-0 accent-tertiary" type="radio"
-                                                        name="gender" id="gender">
-                                                    <label for="gender" class="text-xs">Female</label>
-                                                </div>
-                                            </div>
-                                            <input type="text" placeholder="Enter"
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                        </div>
-                                        <div id="actions"
-                                            class="col-span-2 flex justify-end items-end gap-3 h-fit py-10">
-                                            <button
-                                                class="bg-off-white-text text-secondary px-5 py-2 w-fit text-sm rounded-full border-2 border-secondary font-bold hover:bg-secondary hover:text-off-white-text">Reset</button>
-                                            <button
-                                                class="bg-off-white-text text-accent-text px-5 py-2 w-fit text-sm rounded-full border-2 border-primary font-bold hover:bg-primary hover:text-off-white-text">Save</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- create record - end -->
-                        <!-- edit record - start -->
-                        <div id="form"
-                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full">
-                            <div id="header"
-                                class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
-                                <div id="header-title" class="flex gap-3 items-center h-9 py-1">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="1" stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="lucide lucide-square-pen w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300 w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300">
-                                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                            <path
-                                                d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z" />
-                                        </svg>
-                                    </span>
-                                    <h1 class="font-sora text-lg sm:text-xl">Hayvanlarım / Kayıt Düzenle</h1>
-                                </div>
-                            </div>
-                            <div class="px-6 h-full">
-                                <div class="rounded-lg overflow-hidden h-full">
-                                    <form action=""
-                                        class="flex flex-col justify-between gap-3 p-3 w-full h-full text-xs text-tertiary">
-                                        <div class="grid grid-cols-2 gap-3 h-fit">
-                                            <input type="text" placeholder="Enter Earring No."
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                            <input type="text" placeholder="Enter name"
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                            <input id="date-picker" type="text" placeholder="Enter birth date"
-                                                onfocus="(this.type='date')" onblur="(this.type='text')"
-                                                class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                            <select
-                                                class="border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary"
-                                                name="" id="">
-                                                <option value="0" class="text-gray-400">Select the genre</option>
-                                            </select>
-                                            <select name="" id=""
-                                                class="border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                <option value="0">Both exist</option>
-                                                <option value="1">One dropped</option>
-                                                <option value="2">Both dropped</option>
-                                            </select>
-                                            <div id="gender"
-                                                class="flex gap-3 self-end justify-end items-center px-8 py-4 border border-slate-200 rounded-xl text-slate-400">
-                                                <p class="text-sm font-bold">Gender:</p>
-                                                <div class="flex gap-1 items-center w-fit px-3 h-full">
-                                                    <input class="w-6 h-6 border-0 accent-tertiary" type="radio"
-                                                        name="gender" id="gender">
-                                                    <label for=" gender" class="text-xs">Male</label>
-                                                </div>
-                                                <div class="flex gap-1 items-center w-fit px-3 h-full">
-                                                    <input class="w-6 h-6 border-0 accent-tertiary" type="radio"
-                                                        name="gender" id="gender">
-                                                    <label for="gender" class="text-xs">Female</label>
-                                                </div>
-                                            </div>
-                                            <input type="text" placeholder="Enter"
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                        </div>
-                                        <div id="actions"
-                                            class="col-span-2 flex justify-end items-end gap-3 h-fit py-10">
-                                            <button
-                                                class="bg-off-white-text text-secondary px-5 py-2 w-fit text-sm rounded-full border-2 border-secondary font-bold hover:bg-secondary hover:text-off-white-text">Reset</button>
-                                            <button
-                                                class="bg-off-white-text text-accent-text px-5 py-2 w-fit text-sm rounded-full border-2 border-primary font-bold hover:bg-primary hover:text-off-white-text">Save</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- edit record - end -->
-                        <!-- record detail - start -->
-                        <div id="form"
-                            class="flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full">
-                            <div id="header"
-                                class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
-                                <div id="header-title" class="flex gap-3 items-center h-9 py-1">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="1" stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            class="lucide lucide-square-pen w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300 w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300">
-                                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                            <path
-                                                d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z" />
-                                        </svg>
-                                    </span>
-                                    <h1 class="font-sora text-lg sm:text-xl">Hayvanlarım / Kayıt Detayı</h1>
-                                </div>
-                            </div>
-                            <div class="px-6 h-full">
-                                <div class="rounded-lg overflow-hidden h-full">
-                                    <form action=""
-                                        class="flex flex-col justify-between gap-3 p-3 w-full h-full text-xs text-gray-400">
-                                        <div class="grid grid-cols-2 gap-3 h-fit">
-                                            <p
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                Earring No.</p>
-                                            <p
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                name</p>
-                                            <p
-                                                class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                birth date</p>
-                                            <p
-                                                class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                genre</p>
-                                            <p
-                                                class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                earring status</p>
-                                            <p
-                                                class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                gender</p>
-                                            <p
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                enter</p>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- record detail - end -->
                     </div>
                     <!-- operation page - end -->
                 </div>

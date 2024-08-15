@@ -14,7 +14,7 @@
     style="background-image: url('../assets/images/blog/bg_paw-prints_duotone-5.png'); background-size: cover; background-position: center;">
     <div class="flex flex-col">
         <!-- header - start -->
-        <div id="header" class="relative flex items-center justify-between bg-slate-200 px-2 py-7">
+        <div id="header" class="relative flex items-center justify-between bg-off-white-text px-2 py-7">
             <div class="container flex items-center justify-between">
                 <div id="title" class="">
                     <h1 class="flex items-center text-4xl font-semibold">
@@ -31,18 +31,22 @@
                 </div>
                 <div class="menu w-3/4">
                     <ul class="flex gap-3 items-center justify-end text-sm">
-                        <li
-                            class="group/navigation-menu flex flex-col items-center justify-center px-3 py-1 rounded-sm hover:border-b-2 border-primary">
-                            <img src="../assets/icons/house.svg" alt="" srcset="" class="w-6 h-6">
-                            <p class="hidden text-accent-text group-hover/navigation-menu:flex">Anasayfa</p>
+                        <li>
+                            <a href="./index.html"
+                                class="group/navigation-menu flex flex-col items-center justify-center px-3 py-1 rounded-sm hover:border-b-2 border-primary">
+                                <img src="../assets/icons/house.svg" alt="" srcset="" class="w-6 h-6">
+                                <p class="hidden text-accent-text group-hover/navigation-menu:flex">Anasayfa</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./about-me.html"
+                                class="group/navigation-menu flex flex-col items-center justify-center px-3 py-1 rounded-sm hover:border-b-2 border-primary">
+                                <img src="../assets/icons/book-open-text.svg" alt="" class="w-6 h-6">
+                                <p class="hidden text-accent-text group-hover/navigation-menu:flex">Hakkımda</p>
+                            </a>
                         </li>
                         <li
-                            class="group/navigation-menu flex flex-col items-center justify-center px-3 py-1 rounded-sm hover:border-b-2 border-primary">
-                            <img src="../assets/icons/book-open-text.svg" alt="" class="w-6 h-6">
-                            <p class="hidden text-accent-text group-hover/navigation-menu:flex">Hakkımda</p>
-                        </li>
-                        <li
-                            class="group/avatar min-w-12 min-h-12 ml-4 transition-all duration-1000 hover:text-off-white-text">
+                            class="group/avatar min-w-12 min-h-12 ml-4 transition-all duration-1000 hover:text-off-white-text hover:cursor-pointer">
                             <div id="avatar" class="flex items-center bg-primary rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                     stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"
@@ -77,35 +81,41 @@
                         </button>
                         <p class="font-montserrat font-medium text-start group-hover/avatar:flex">
                             Muhammet Sarıcan</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.3"
-                            stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-log-out w-11 h-11 border border-secondary p-2 rounded-full stroke-off-white-text hover:bg-red-500/60">
-                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                            <polyline points="16 17 21 12 16 7" />
-                            <line x1="21" x2="9" y1="12" y2="12" />
-                        </svg>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.3"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-log-out w-11 h-11 border border-secondary p-2 rounded-full stroke-off-white-text hover:bg-red-500/60">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                                <polyline points="16 17 21 12 16 7" />
+                                <line x1="21" x2="9" y1="12" y2="12" />
+                            </svg>
+                        </button>
                     </div>
                     <div id="avatar-processes"
                         class="flex flex-col items-start font-light divide-y divide-background/40">
-                        <a href="./" class="flex justify-center w-full hover:bg-accent-text hover:font-normal">
+                        <a href="./my-animal.html"
+                            class="flex justify-center w-full hover:bg-accent-text hover:font-normal">
                             <div class="flex justify-between items-center w-5/6 py-2">
                                 <img src="../assets/icons/panel/bone.svg" alt="">
                                 <p class="w-full text-center">Hayvanlarım</p>
                             </div>
                         </a>
-                        <a href="./" class="flex justify-center w-full hover:bg-accent-text hover:font-normal">
+                        <a href="./vaccine-history.html"
+                            class="flex justify-center w-full hover:bg-accent-text hover:font-normal">
                             <div class="flex justify-between items-center w-5/6 py-2">
                                 <img src="../assets/icons/panel/syringe.svg" alt="">
                                 <p class="w-full text-center">Aşı Geçmişi</p>
                             </div>
                         </a>
-                        <a href="./" class="flex justify-center w-full hover:bg-accent-text hover:font-normal">
+                        <a href="./pregnant-log.html"
+                            class="flex justify-center w-full hover:bg-accent-text hover:font-normal">
                             <div class="flex justify-between items-center w-5/6 py-2">
                                 <img src="../assets/icons/panel/clipboard.svg" alt="">
                                 <p class="w-full text-center">Gebelik Takibi</p>
                             </div>
                         </a>
-                        <a href="./" class="flex justify-center w-full hover:bg-accent-text hover:font-normal">
+                        <a href="./treatment-history.html"
+                            class="flex justify-center w-full hover:bg-accent-text hover:font-normal">
                             <div class="flex justify-between items-center w-5/6 py-2">
                                 <img src="../assets/icons/panel/heart-pulse.svg" alt="">
                                 <p class="w-full text-center">Tedavi Geçmişi</p>
@@ -124,6 +134,20 @@
                     <div id="news-box" class="relative w-full h-[calc(90svh-88px)] flex"
                         style="transition: all 5s ease;">
                         <div id="news-container" class="absolute flex h-full transition-all duration-1000">
+                            <div id="news-item" class="w-screen h-full">
+                                <!-- title - start -->
+                                <p id="title"
+                                    class="absolute bottom-0 text-accent p-5 bg-gray-500/45 w-full group-hover/news:bg-gray-900/75 z-20">
+                                    <a href="" class="hover:text-link-text hover:underline underline-offset-4">
+                                        Köpekler ne kadar sosyal canlılar?
+                                    </a>
+                                </p>
+                                <!-- title - end -->
+                                <!-- img - start -->
+                                <img class="w-full h-full object-cover object-center"
+                                    src="../assets/images/news carousel/street-dogs-4.jpg" alt="" srcset="">
+                                <!-- img - end -->
+                            </div>
                             <div id="news-item" class="relative w-screen h-full">
                                 <!-- title - start -->
                                 <div id="title"
@@ -229,20 +253,6 @@
                                 <!-- img - start -->
                                 <img class="w-full h-full object-cover object-center"
                                     src="../assets/images/news carousel/street-cats-4.jpg" alt="" srcset="">
-                                <!-- img - end -->
-                            </div>
-                            <div id="news-item" class="w-screen h-full">
-                                <!-- title - start -->
-                                <p id="title"
-                                    class="absolute bottom-0 text-accent p-5 bg-gray-500/45 w-full group-hover/news:bg-gray-900/75 z-20">
-                                    <a href="" class="hover:text-link-text hover:underline underline-offset-4">
-                                        Köpekler ne kadar sosyal canlılar?
-                                    </a>
-                                </p>
-                                <!-- title - end -->
-                                <!-- img - start -->
-                                <img class="w-full h-full object-cover object-center"
-                                    src="../assets/images/news carousel/street-dogs-4.jpg" alt="" srcset="">
                                 <!-- img - end -->
                             </div>
                         </div>
@@ -530,6 +540,7 @@
     <!-- scripts -->
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/carousel.js"></script>
+    <script src="../assets/js/statistic-counter-animation.js"></script>
 </body>
 
 </html>
