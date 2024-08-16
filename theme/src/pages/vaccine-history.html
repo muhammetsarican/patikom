@@ -104,7 +104,7 @@
                             class="flex justify-center w-full hover:bg-accent-text hover:font-normal">
                             <div class="flex justify-between items-center w-5/6 py-2">
                                 <img src="../assets/icons/panel/syringe.svg" alt="">
-                                <p class="w-full text-center">Aşı Geçmişi</p>
+                                <p class="w-full text-center">Kayıtlı Aşılar</p>
                             </div>
                         </a>
                         <a href="./pregnant-log.html"
@@ -133,7 +133,7 @@
                 <img class="w-full object-cover object-[0,-325px] h-80"
                     src="../assets/images/vaccine-history/title-banner.png" alt="">
                 <p class="absolute w-full text-center inset-y-[45%] font-sora text-5xl text-off-white-text z-20">
-                    Aşı Geçmişi
+                    Kayıtlı Aşılar
                 </p>
                 <span id="fligree" class="absolute top-0 w-full h-full bg-gray-900/50 z-10"></span>
             </div>
@@ -158,7 +158,8 @@
                         <ul class="flex flex-col items-center text-center divide-y divide-slate-800/10">
                             <li class="w-full">
                                 <button
-                                    class="w-full flex items-center justify-center px-1 py-3 hover:bg-tertiary/90 hover:text-off-white-text">
+                                    class="w-full flex items-center justify-center px-1 py-3 hover:bg-tertiary/90 hover:text-off-white-text"
+                                    id="operation-button" data-referPage="list-page">
                                     <span class="flex justify-between items-center w-4/6">
                                         <img src="../assets/icons/clipboard-list.svg" alt="">
                                         <p class="capitalize w-full text-start px-5">kayıt listesi</p>
@@ -167,7 +168,8 @@
                             </li>
                             <li class="w-full">
                                 <button
-                                    class="w-full flex items-center justify-center px-1 py-3 hover:bg-tertiary/90 hover:text-off-white-text">
+                                    class="w-full flex items-center justify-center px-1 py-3 hover:bg-tertiary/90 hover:text-off-white-text"
+                                    id="operation-button" data-referPage="create-page">
                                     <span class="flex justify-between items-center w-4/6">
                                         <img src="../assets/icons/clipboard-plus.svg" alt="">
                                         <p class="capitalize w-full text-start px-5">yeni kayıt</p>
@@ -179,8 +181,10 @@
                     <!-- operation menu - end -->
                     <!-- operation page - start -->
                     <div id="operation-page" class="w-full">
-                        <div id="table"
-                            class="flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full">
+                        <!-- list record - start -->
+                        <div id="operation-item"
+                            class="flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
+                            data-name="list-page">
                             <div id="header"
                                 class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
                                 <div id="header-title" class="flex gap-3 items-center">
@@ -197,16 +201,16 @@
                                             <path d="M14 20h7" />
                                         </svg>
                                     </span>
-                                    <h1 class="font-sora text-lg sm:text-xl">Aşı Geçmişi / Kayıt Listesi</h1>
+                                    <h1 class="font-sora text-lg sm:text-xl">Kayıtlı Aşılar / Kayıt Listesi</h1>
                                 </div>
-                                <div id="create-record-button">
+                                <button id="operation-button" data-referPage="create-page">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                         class="w-9 h-9 p-1 lucide lucide-plus stroke-green-500 rounded-full hover:bg-green-500/30">
                                         <path d="M5 12h14" />
                                         <path d="M12 5v14" />
                                     </svg>
-                                </div>
+                                </button>
                             </div>
                             <div class="px-6">
                                 <div class="rounded-lg overflow-hidden border">
@@ -214,34 +218,26 @@
                                         <thead class="bg-slate-50 text-accent-text">
                                             <tr class="uppercase">
                                                 <th class="py-4">adı</th>
-                                                <th class="py-4">anne adı</th>
-                                                <th class="py-4">ırkı</th>
-                                                <th class="py-4">cinsiyeti</th>
-                                                <th class="py-4">doğum tarihi</th>
-                                                <th class="py-4">çip durumu</th>
+                                                <th class="py-4">anahtar kelime</th>
                                                 <th class="py-4" colspan="2">işlemler</th>
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white text-primary-text capitalize">
                                             <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
-                                                <td class="border py-3">müge</td>
-                                                <td class="border py-3">asya
-                                                </td>
-                                                <td class="border py-3">golder retriever</td>
-                                                <td class="border py-3">dişi</td>
-                                                <td class="border py-3">16.16.2020</td>
-                                                <td class="border py-3">yok</td>
+                                                <td class="border py-3">tetravalan</td>
+                                                <td class="border py-3">şap aşısı</td>
                                                 <td class="border flex" colspan="2">
                                                     <button
                                                         class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
-                                                        onclick="openPopUpForm()">
+                                                        id="operation-button" data-referPage="detail-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-list.svg" alt="">
                                                         </span>
                                                     </button>
                                                     <button
-                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm">
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-pen.svg" alt="">
@@ -257,24 +253,20 @@
                                                 </td>
                                             </tr>
                                             <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
-                                                <td class="border py-3">müge</td>
-                                                <td class="border py-3">asya
-                                                </td>
-                                                <td class="border py-3">golder retriever</td>
-                                                <td class="border py-3">dişi</td>
-                                                <td class="border py-3">16.16.2020</td>
-                                                <td class="border py-3">yok</td>
+                                                <td class="border py-3">tetravalan</td>
+                                                <td class="border py-3">şap aşısı</td>
                                                 <td class="border flex" colspan="2">
                                                     <button
                                                         class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
-                                                        onclick="openPopUpForm()">
+                                                        id="operation-button" data-referPage="detail-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-list.svg" alt="">
                                                         </span>
                                                     </button>
                                                     <button
-                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm">
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-pen.svg" alt="">
@@ -290,24 +282,20 @@
                                                 </td>
                                             </tr>
                                             <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
-                                                <td class="border py-3">müge</td>
-                                                <td class="border py-3">asya
-                                                </td>
-                                                <td class="border py-3">golder retriever</td>
-                                                <td class="border py-3">dişi</td>
-                                                <td class="border py-3">16.16.2020</td>
-                                                <td class="border py-3">yok</td>
+                                                <td class="border py-3">tetravalan</td>
+                                                <td class="border py-3">şap aşısı</td>
                                                 <td class="border flex" colspan="2">
                                                     <button
                                                         class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
-                                                        onclick="openPopUpForm()">
+                                                        id="operation-button" data-referPage="detail-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-list.svg" alt="">
                                                         </span>
                                                     </button>
                                                     <button
-                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm">
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-pen.svg" alt="">
@@ -323,24 +311,20 @@
                                                 </td>
                                             </tr>
                                             <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
-                                                <td class="border py-3">müge</td>
-                                                <td class="border py-3">asya
-                                                </td>
-                                                <td class="border py-3">golder retriever</td>
-                                                <td class="border py-3">dişi</td>
-                                                <td class="border py-3">16.16.2020</td>
-                                                <td class="border py-3">yok</td>
+                                                <td class="border py-3">tetravalan</td>
+                                                <td class="border py-3">şap aşısı</td>
                                                 <td class="border flex" colspan="2">
                                                     <button
                                                         class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
-                                                        onclick="openPopUpForm()">
+                                                        id="operation-button" data-referPage="detail-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-list.svg" alt="">
                                                         </span>
                                                     </button>
                                                     <button
-                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm">
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-pen.svg" alt="">
@@ -356,24 +340,136 @@
                                                 </td>
                                             </tr>
                                             <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
-                                                <td class="border py-3">müge</td>
-                                                <td class="border py-3">asya
-                                                </td>
-                                                <td class="border py-3">golder retriever</td>
-                                                <td class="border py-3">dişi</td>
-                                                <td class="border py-3">16.16.2020</td>
-                                                <td class="border py-3">yok</td>
+                                                <td class="border py-3">tetravalan</td>
+                                                <td class="border py-3">şap aşısı</td>
                                                 <td class="border flex" colspan="2">
                                                     <button
                                                         class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
-                                                        onclick="openPopUpForm()">
+                                                        id="operation-button" data-referPage="detail-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-list.svg" alt="">
                                                         </span>
                                                     </button>
                                                     <button
-                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm">
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-pen.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-red-500 text-white w-full h-full py-3 rounded-sm">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-x.svg" alt="" srcset="">
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
+                                                <td class="border py-3">tetravalan</td>
+                                                <td class="border py-3">şap aşısı</td>
+                                                <td class="border flex" colspan="2">
+                                                    <button
+                                                        class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="detail-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-list.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-pen.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-red-500 text-white w-full h-full py-3 rounded-sm">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-x.svg" alt="" srcset="">
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
+                                                <td class="border py-3">tetravalan</td>
+                                                <td class="border py-3">şap aşısı</td>
+                                                <td class="border flex" colspan="2">
+                                                    <button
+                                                        class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="detail-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-list.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-pen.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-red-500 text-white w-full h-full py-3 rounded-sm">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-x.svg" alt="" srcset="">
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
+                                                <td class="border py-3">tetravalan</td>
+                                                <td class="border py-3">şap aşısı</td>
+                                                <td class="border flex" colspan="2">
+                                                    <button
+                                                        class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="detail-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-list.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-pen.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-red-500 text-white w-full h-full py-3 rounded-sm">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-x.svg" alt="" srcset="">
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
+                                                <td class="border py-3">tetravalan</td>
+                                                <td class="border py-3">şap aşısı</td>
+                                                <td class="border flex" colspan="2">
+                                                    <button
+                                                        class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="detail-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-list.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-pen.svg" alt="">
@@ -441,6 +537,136 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- list record - end -->
+                        <!-- create record - start -->
+                        <div id="operation-item"
+                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
+                            data-name="create-page">
+                            <div id="header"
+                                class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
+                                <div id="header-title" class="flex gap-3 items-center h-9 py-1">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-file-plus-2 w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300 w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300">
+                                            <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4" />
+                                            <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                                            <path d="M3 15h6" />
+                                            <path d="M6 12v6" />
+                                        </svg>
+                                    </span>
+                                    <h1 class="font-sora text-lg sm:text-xl">Kayıtlı Aşılar / Yeni Kayıt</h1>
+                                </div>
+                            </div>
+                            <div class="px-6 h-full">
+                                <div class="rounded-lg overflow-hidden h-full">
+                                    <form action=""
+                                        class="flex flex-col justify-between gap-3 p-3 w-full h-full text-xs text-tertiary">
+                                        <div class="grid grid-cols-2 gap-3 h-fit">
+                                            <input type="text" placeholder="Adını giriniz"
+                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                            <input type="text" placeholder="Anahtar kelime giriniz"
+                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                            <input type="text" placeholder="Açıklama giriniz"
+                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                        </div>
+                                        <div id="actions"
+                                            class="col-span-2 flex justify-end items-end gap-3 h-fit py-10">
+                                            <button
+                                                class="bg-off-white-text text-secondary px-5 py-2 w-fit text-sm rounded-full border-2 border-secondary font-bold hover:bg-secondary hover:text-off-white-text">Reset</button>
+                                            <button
+                                                class="bg-off-white-text text-accent-text px-5 py-2 w-fit text-sm rounded-full border-2 border-primary font-bold hover:bg-primary hover:text-off-white-text">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- create record - end -->
+                        <!-- edit record - start -->
+                        <div id="operation-item"
+                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
+                            data-name="edit-page">
+                            <div id="header"
+                                class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
+                                <div id="header-title" class="flex gap-3 items-center h-9 py-1">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="lucide lucide-square-pen w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300 w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300">
+                                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                            <path
+                                                d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z" />
+                                        </svg>
+                                    </span>
+                                    <h1 class="font-sora text-lg sm:text-xl">Kayıtlı Aşılar / Kayıt Düzenle</h1>
+                                </div>
+                            </div>
+                            <div class="px-6 h-full">
+                                <div class="rounded-lg overflow-hidden h-full">
+                                    <form action=""
+                                        class="flex flex-col justify-between gap-3 p-3 w-full h-full text-xs text-tertiary">
+                                        <div class="grid grid-cols-2 gap-3 h-fit">
+                                            <input type="text" placeholder="Adını giriniz"
+                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                            <input type="text" placeholder="Anahtar kelime giriniz"
+                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                            <input type="text" placeholder="Açıklama giriniz"
+                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                        </div>
+                                        <div id="actions"
+                                            class="col-span-2 flex justify-end items-end gap-3 h-fit py-10">
+                                            <button
+                                                class="bg-off-white-text text-secondary px-5 py-2 w-fit text-sm rounded-full border-2 border-secondary font-bold hover:bg-secondary hover:text-off-white-text">Reset</button>
+                                            <button
+                                                class="bg-off-white-text text-accent-text px-5 py-2 w-fit text-sm rounded-full border-2 border-primary font-bold hover:bg-primary hover:text-off-white-text">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- edit record - end -->
+                        <!-- record detail - start -->
+                        <div id="operation-item"
+                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
+                            data-name="detail-page">
+                            <div id="header"
+                                class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
+                                <div id="header-title" class="flex gap-3 items-center h-9 py-1">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            class="lucide lucide-square-pen w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300 w-6 sm:w-7 h-6 sm:h-7 stroke-gray-300">
+                                            <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                            <path
+                                                d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z" />
+                                        </svg>
+                                    </span>
+                                    <h1 class="font-sora text-lg sm:text-xl">Kayıtlı Aşılar / Kayıt Detayı</h1>
+                                </div>
+                            </div>
+                            <div class="px-6 h-full">
+                                <div class="rounded-lg overflow-hidden h-full">
+                                    <form action=""
+                                        class="flex flex-col justify-between gap-3 p-3 w-full h-full text-xs text-gray-400">
+                                        <div class="grid grid-cols-2 gap-3 h-fit">
+                                            <p
+                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                                Adı:</p>
+                                            <p
+                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                                Anahtar Kelime:</p>
+                                            <p
+                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                                Açıklama:</p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- record detail - end -->
                     </div>
                     <!-- operation page - end -->
                 </div>
@@ -524,6 +750,7 @@
         </div>
         <!-- footer - end -->
         <script src="../assets/js/main.js"></script>
+        <script src="../assets/js/operation-pages.js"></script>
 </body>
 
 </html>

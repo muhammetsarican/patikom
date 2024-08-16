@@ -104,7 +104,7 @@
                             class="flex justify-center w-full hover:bg-accent-text hover:font-normal">
                             <div class="flex justify-between items-center w-5/6 py-2">
                                 <img src="../assets/icons/panel/syringe.svg" alt="">
-                                <p class="w-full text-center">Aşı Geçmişi</p>
+                                <p class="w-full text-center">Kayıtlı Aşılar</p>
                             </div>
                         </a>
                         <a href="./pregnant-log.html"
@@ -158,7 +158,8 @@
                         <ul class="flex flex-col items-center text-center divide-y divide-slate-800/10">
                             <li class="w-full">
                                 <button
-                                    class="w-full flex items-center justify-center px-1 py-3 hover:bg-tertiary/90 hover:text-off-white-text">
+                                    class="w-full flex items-center justify-center px-1 py-3 hover:bg-tertiary/90 hover:text-off-white-text"
+                                    id="operation-button" data-referPage="list-page">
                                     <span class="flex justify-between items-center w-4/6">
                                         <img src="../assets/icons/clipboard-list.svg" alt="">
                                         <p class="capitalize w-full text-start px-5">kayıt listesi</p>
@@ -167,7 +168,8 @@
                             </li>
                             <li class="w-full">
                                 <button
-                                    class="w-full flex items-center justify-center px-1 py-3 hover:bg-tertiary/90 hover:text-off-white-text">
+                                    class="w-full flex items-center justify-center px-1 py-3 hover:bg-tertiary/90 hover:text-off-white-text"
+                                    id="operation-button" data-referPage="create-page">
                                     <span class="flex justify-between items-center w-4/6">
                                         <img src="../assets/icons/clipboard-plus.svg" alt="">
                                         <p class="capitalize w-full text-start px-5">yeni kayıt</p>
@@ -180,8 +182,9 @@
                     <!-- operation page - start -->
                     <div id="operation-page" class="w-full">
                         <!-- list record - start -->
-                        <div id="table"
-                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full">
+                        <div id="operation-item"
+                            class="flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
+                            data-name="list-page">
                             <div id="header"
                                 class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
                                 <div id="header-title" class="flex gap-3 items-center">
@@ -200,14 +203,14 @@
                                     </span>
                                     <h1 class="font-sora text-lg sm:text-xl">Hayvanlarım / Kayıt Listesi</h1>
                                 </div>
-                                <div id="create-record-button">
+                                <button id="operation-button" data-referPage="create-page">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                         class="w-9 h-9 p-1 lucide lucide-plus stroke-green-500 rounded-full hover:bg-green-500/30">
                                         <path d="M5 12h14" />
                                         <path d="M12 5v14" />
                                     </svg>
-                                </div>
+                                </button>
                             </div>
                             <div class="px-6">
                                 <div class="rounded-lg overflow-hidden border">
@@ -225,8 +228,8 @@
                                         </thead>
                                         <tbody class="bg-white text-primary-text capitalize">
                                             <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
-                                                <td class="border py-3">müge</td>
-                                                <td class="border py-3">asya
+                                                <td class="border py-3">boncuk</td>
+                                                <td class="border py-3">fıstık
                                                 </td>
                                                 <td class="border py-3">golder retriever</td>
                                                 <td class="border py-3">dişi</td>
@@ -235,14 +238,15 @@
                                                 <td class="border flex" colspan="2">
                                                     <button
                                                         class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
-                                                        onclick="openPopUpForm()">
+                                                        id="operation-button" data-referPage="detail-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-list.svg" alt="">
                                                         </span>
                                                     </button>
                                                     <button
-                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm">
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-pen.svg" alt="">
@@ -258,8 +262,8 @@
                                                 </td>
                                             </tr>
                                             <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
-                                                <td class="border py-3">müge</td>
-                                                <td class="border py-3">asya
+                                                <td class="border py-3">boncuk</td>
+                                                <td class="border py-3">fıstık
                                                 </td>
                                                 <td class="border py-3">golder retriever</td>
                                                 <td class="border py-3">dişi</td>
@@ -268,14 +272,15 @@
                                                 <td class="border flex" colspan="2">
                                                     <button
                                                         class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
-                                                        onclick="openPopUpForm()">
+                                                        id="operation-button" data-referPage="detail-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-list.svg" alt="">
                                                         </span>
                                                     </button>
                                                     <button
-                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm">
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-pen.svg" alt="">
@@ -291,8 +296,8 @@
                                                 </td>
                                             </tr>
                                             <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
-                                                <td class="border py-3">müge</td>
-                                                <td class="border py-3">asya
+                                                <td class="border py-3">boncuk</td>
+                                                <td class="border py-3">fıstık
                                                 </td>
                                                 <td class="border py-3">golder retriever</td>
                                                 <td class="border py-3">dişi</td>
@@ -301,14 +306,15 @@
                                                 <td class="border flex" colspan="2">
                                                     <button
                                                         class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
-                                                        onclick="openPopUpForm()">
+                                                        id="operation-button" data-referPage="detail-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-list.svg" alt="">
                                                         </span>
                                                     </button>
                                                     <button
-                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm">
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-pen.svg" alt="">
@@ -324,8 +330,8 @@
                                                 </td>
                                             </tr>
                                             <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
-                                                <td class="border py-3">müge</td>
-                                                <td class="border py-3">asya
+                                                <td class="border py-3">boncuk</td>
+                                                <td class="border py-3">fıstık
                                                 </td>
                                                 <td class="border py-3">golder retriever</td>
                                                 <td class="border py-3">dişi</td>
@@ -334,14 +340,15 @@
                                                 <td class="border flex" colspan="2">
                                                     <button
                                                         class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
-                                                        onclick="openPopUpForm()">
+                                                        id="operation-button" data-referPage="detail-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-list.svg" alt="">
                                                         </span>
                                                     </button>
                                                     <button
-                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm">
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-pen.svg" alt="">
@@ -357,8 +364,8 @@
                                                 </td>
                                             </tr>
                                             <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
-                                                <td class="border py-3">müge</td>
-                                                <td class="border py-3">asya
+                                                <td class="border py-3">boncuk</td>
+                                                <td class="border py-3">fıstık
                                                 </td>
                                                 <td class="border py-3">golder retriever</td>
                                                 <td class="border py-3">dişi</td>
@@ -367,14 +374,151 @@
                                                 <td class="border flex" colspan="2">
                                                     <button
                                                         class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
-                                                        onclick="openPopUpForm()">
+                                                        id="operation-button" data-referPage="detail-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-list.svg" alt="">
                                                         </span>
                                                     </button>
                                                     <button
-                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm">
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-pen.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-red-500 text-white w-full h-full py-3 rounded-sm">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-x.svg" alt="" srcset="">
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
+                                                <td class="border py-3">boncuk</td>
+                                                <td class="border py-3">fıstık
+                                                </td>
+                                                <td class="border py-3">golder retriever</td>
+                                                <td class="border py-3">dişi</td>
+                                                <td class="border py-3">16.16.2020</td>
+                                                <td class="border py-3">yok</td>
+                                                <td class="border flex" colspan="2">
+                                                    <button
+                                                        class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="detail-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-list.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-pen.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-red-500 text-white w-full h-full py-3 rounded-sm">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-x.svg" alt="" srcset="">
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
+                                                <td class="border py-3">boncuk</td>
+                                                <td class="border py-3">fıstık
+                                                </td>
+                                                <td class="border py-3">golder retriever</td>
+                                                <td class="border py-3">dişi</td>
+                                                <td class="border py-3">16.16.2020</td>
+                                                <td class="border py-3">yok</td>
+                                                <td class="border flex" colspan="2">
+                                                    <button
+                                                        class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="detail-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-list.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-pen.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-red-500 text-white w-full h-full py-3 rounded-sm">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-x.svg" alt="" srcset="">
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
+                                                <td class="border py-3">boncuk</td>
+                                                <td class="border py-3">fıstık
+                                                </td>
+                                                <td class="border py-3">golder retriever</td>
+                                                <td class="border py-3">dişi</td>
+                                                <td class="border py-3">16.16.2020</td>
+                                                <td class="border py-3">yok</td>
+                                                <td class="border flex" colspan="2">
+                                                    <button
+                                                        class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="detail-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-list.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-pen.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-red-500 text-white w-full h-full py-3 rounded-sm">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-x.svg" alt="" srcset="">
+                                                        </span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center even:bg-primary/10 hover:bg-gray-100">
+                                                <td class="border py-3">boncuk</td>
+                                                <td class="border py-3">fıstık
+                                                </td>
+                                                <td class="border py-3">golder retriever</td>
+                                                <td class="border py-3">dişi</td>
+                                                <td class="border py-3">16.16.2020</td>
+                                                <td class="border py-3">yok</td>
+                                                <td class="border flex" colspan="2">
+                                                    <button
+                                                        class="hover:bg-blue-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="detail-page">
+                                                        <span class="flex justify-center">
+                                                            <img class="w-4 h-4 sm:w-5 sm:h-5"
+                                                                src="../assets/icons/clipboard-list.svg" alt="">
+                                                        </span>
+                                                    </button>
+                                                    <button
+                                                        class="hover:bg-green-500 text-white w-full h-full py-3 rounded-sm"
+                                                        id="operation-button" data-referPage="edit-page">
                                                         <span class="flex justify-center">
                                                             <img class="w-4 h-4 sm:w-5 sm:h-5"
                                                                 src="../assets/icons/clipboard-pen.svg" alt="">
@@ -444,8 +588,9 @@
                         </div>
                         <!-- list record - end -->
                         <!-- create record - start -->
-                        <div id="form"
-                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full">
+                        <div id="operation-item"
+                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
+                            data-name="create-page">
                             <div id="header"
                                 class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
                                 <div id="header-title" class="flex gap-3 items-center h-9 py-1">
@@ -468,27 +613,29 @@
                                     <form action=""
                                         class="flex flex-col justify-between gap-3 p-3 w-full h-full text-xs text-tertiary">
                                         <div class="grid grid-cols-2 gap-3 h-fit">
-                                            <input type="text" placeholder="Enter Earring No."
+                                            <input type="text" placeholder="Adını giriniz"
                                                 class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                            <input type="text" placeholder="Enter name"
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                            <input id="date-picker" type="text" placeholder="Enter birth date"
-                                                onfocus="(this.type='date')" onblur="(this.type='text')"
-                                                class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                            <select
+                                                class="col-span-2 border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary"
+                                                name="" id="">
+                                                <option value="0" class="text-gray-400">Anne adını seçiniz</option>
+                                            </select>
                                             <select
                                                 class="border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary"
                                                 name="" id="">
-                                                <option value="0" class="text-gray-400">Select the genre</option>
+                                                <option value="0" class="text-gray-400">Irkını seçiniz</option>
                                             </select>
-                                            <select name="" id=""
-                                                class="border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                <option value="0">Both exist</option>
-                                                <option value="1">One dropped</option>
-                                                <option value="2">Both dropped</option>
+                                            <select
+                                                class="border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary"
+                                                name="" id="">
+                                                <option value="0" class="text-gray-400">Çip durumunu seçiniz</option>
                                             </select>
+                                            <input id="date-picker" type="text" placeholder="Doğum tarihini giriniz"
+                                                onfocus="(this.type='date')" onblur="(this.type='text')"
+                                                class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
                                             <div id="gender"
                                                 class="flex gap-3 self-end justify-end items-center px-8 py-4 border border-slate-200 rounded-xl text-slate-400">
-                                                <p class="text-sm font-bold">Gender:</p>
+                                                <p class="text-sm font-bold">Cinsiyet:</p>
                                                 <div class="flex gap-1 items-center w-fit px-3 h-full">
                                                     <input class="w-6 h-6 border-0 accent-tertiary" type="radio"
                                                         name="gender" id="gender">
@@ -500,8 +647,6 @@
                                                     <label for="gender" class="text-xs">Female</label>
                                                 </div>
                                             </div>
-                                            <input type="text" placeholder="Enter"
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
                                         </div>
                                         <div id="actions"
                                             class="col-span-2 flex justify-end items-end gap-3 h-fit py-10">
@@ -516,8 +661,9 @@
                         </div>
                         <!-- create record - end -->
                         <!-- edit record - start -->
-                        <div id="form"
-                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full">
+                        <div id="operation-item"
+                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
+                            data-name="edit-page">
                             <div id="header"
                                 class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
                                 <div id="header-title" class="flex gap-3 items-center h-9 py-1">
@@ -539,27 +685,29 @@
                                     <form action=""
                                         class="flex flex-col justify-between gap-3 p-3 w-full h-full text-xs text-tertiary">
                                         <div class="grid grid-cols-2 gap-3 h-fit">
-                                            <input type="text" placeholder="Enter Earring No."
+                                            <input type="text" placeholder="Adını giriniz"
                                                 class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                            <input type="text" placeholder="Enter name"
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                            <input id="date-picker" type="text" placeholder="Enter birth date"
-                                                onfocus="(this.type='date')" onblur="(this.type='text')"
-                                                class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
+                                            <select
+                                                class="col-span-2 border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary"
+                                                name="" id="">
+                                                <option value="0" class="text-gray-400">Anne adını seçiniz</option>
+                                            </select>
                                             <select
                                                 class="border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary"
                                                 name="" id="">
-                                                <option value="0" class="text-gray-400">Select the genre</option>
+                                                <option value="0" class="text-gray-400">Irkını seçiniz</option>
                                             </select>
-                                            <select name="" id=""
-                                                class="border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                <option value="0">Both exist</option>
-                                                <option value="1">One dropped</option>
-                                                <option value="2">Both dropped</option>
+                                            <select
+                                                class="border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary"
+                                                name="" id="">
+                                                <option value="0" class="text-gray-400">Çip durumunu seçiniz</option>
                                             </select>
+                                            <input id="date-picker" type="text" placeholder="Doğum tarihini giriniz"
+                                                onfocus="(this.type='date')" onblur="(this.type='text')"
+                                                class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
                                             <div id="gender"
                                                 class="flex gap-3 self-end justify-end items-center px-8 py-4 border border-slate-200 rounded-xl text-slate-400">
-                                                <p class="text-sm font-bold">Gender:</p>
+                                                <p class="text-sm font-bold">Cinsiyet:</p>
                                                 <div class="flex gap-1 items-center w-fit px-3 h-full">
                                                     <input class="w-6 h-6 border-0 accent-tertiary" type="radio"
                                                         name="gender" id="gender">
@@ -571,8 +719,6 @@
                                                     <label for="gender" class="text-xs">Female</label>
                                                 </div>
                                             </div>
-                                            <input type="text" placeholder="Enter"
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
                                         </div>
                                         <div id="actions"
                                             class="col-span-2 flex justify-end items-end gap-3 h-fit py-10">
@@ -587,8 +733,9 @@
                         </div>
                         <!-- edit record - end -->
                         <!-- record detail - start -->
-                        <div id="form"
-                            class="flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full">
+                        <div id="operation-item"
+                            class="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
+                            data-name="detail-page">
                             <div id="header"
                                 class="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">
                                 <div id="header-title" class="flex gap-3 items-center h-9 py-1">
@@ -612,25 +759,22 @@
                                         <div class="grid grid-cols-2 gap-3 h-fit">
                                             <p
                                                 class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                Earring No.</p>
+                                                Adı:</p>
                                             <p
                                                 class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                name</p>
+                                                Anne Adı:</p>
                                             <p
                                                 class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                birth date</p>
+                                                Irkı:</p>
                                             <p
                                                 class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                genre</p>
+                                                Çip Durumu:</p>
                                             <p
                                                 class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                earring status</p>
+                                                Doğum Tarihi:</p>
                                             <p
                                                 class="border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                gender</p>
-                                            <p
-                                                class="col-span-2 border rounded-xl p-4 w-full text-xs outline-none focus:outline-offset-0 focus:outline focus:outline-primary">
-                                                enter</p>
+                                                Cinsiyet:</p>
                                         </div>
                                     </form>
                                 </div>
@@ -720,6 +864,7 @@
         </div>
         <!-- footer - end -->
         <script src="../assets/js/main.js"></script>
+        <script src="../assets/js/operation-pages.js"></script>
 </body>
 
 </html>
