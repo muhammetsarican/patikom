@@ -14,7 +14,7 @@ export default () => {
                     <Link to="/home">
                         <h1 className="flex items-center text-4xl font-semibold">
                             P<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"
-                                fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                                 className="lucide lucide-paw-print stroke-primary">
                                 <circle cx="11" cy="4" r="2" />
                                 <circle cx="18" cy="8" r="2" />
@@ -47,8 +47,8 @@ export default () => {
                             <Link to="/contact-me"
                                 className="group/navigation-menu flex flex-col items-center justify-center px-3 py-1 rounded-sm hover:border-b-2 border-primary">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" className="lucide lucide-phone w-6 h-6 stroke-accent-text">
+                                    stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                                    strokeLinejoin="round" className="lucide lucide-phone w-6 h-6 stroke-accent-text">
                                     <path
                                         d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                                 </svg>
@@ -61,7 +61,7 @@ export default () => {
                             className="group/avatar min-w-12 min-h-12 ml-4 transition-all duration-1000 hover:text-off-white-text hover:cursor-pointer">
                             <div id="avatar" className={`flex items-center rounded-full ${avatarBoxIsOpen ? "bg-tertiary" : "bg-primary"}`} onClick={() => setAvatarBoxIsOpen(!avatarBoxIsOpen)}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"
+                                    strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"
                                     className="lucide lucide-circle-user w-12 h-12 border-primary p-1 stroke-off-white-text">
                                     <circle cx="12" cy="12" r="10" />
                                     <circle cx="12" cy="10" r="3" />

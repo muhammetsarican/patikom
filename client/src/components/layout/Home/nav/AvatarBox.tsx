@@ -12,8 +12,8 @@ export default () => {
                 <div id="non-authenticated">
                     <Link to="/auth/login" className="flex gap-7 items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="1.3" stroke-linecap="round"
-                            stroke-linejoin="round"
+                            stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"
+                            strokeLinejoin="round"
                             className="lucide lucide-key w-11 h-11 border border-secondary p-2 rounded-full stroke-off-white-text hover:bg-primary">
                             <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" />
                             <path d="m21 2-9.6 9.6" />
@@ -26,7 +26,7 @@ export default () => {
                 <div id="authenticated" className="flex gap-7 items-center">
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"
+                            strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"
                             className="lucide lucide-user-cog w-11 h-11 border border-secondary p-2 rounded-full stroke-off-white-text hover:bg-green-500/60">
                             <circle cx="18" cy="15" r="3" />
                             <circle cx="9" cy="7" r="4" />
@@ -45,7 +45,7 @@ export default () => {
                         Muhammet Sarıcan</p>
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"
+                            strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"
                             className="lucide lucide-log-out w-11 h-11 border border-secondary p-2 rounded-full stroke-off-white-text hover:bg-red-500/60">
                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
                             <polyline points="16 17 21 12 16 7" />

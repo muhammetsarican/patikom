@@ -148,7 +148,7 @@ export default () => {
                     {/* <!-- prev - start --> */}
                     <span id="prev" className="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                             className="lucide lucide-chevron-left stroke-muted w-14 h-14 absolute left-0 inset-y-[calc(40%)] p-3 bg-gray-900/40 hover:stroke-background hover:bg-gray-900/50 z-30">
                             <path d="m15 18-6-6 6-6" />
                         </svg>
@@ -157,7 +157,7 @@ export default () => {
                     {/* <!-- next - start --> */}
                     <span id="next" className="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                             className="lucide lucide-chevron-right stroke-muted w-14 h-14 absolute right-0 inset-y-[calc(40%)] p-3 bg-gray-900/40 hover:stroke-background hover:bg-gray-900/50 z-30">
                             <path d="m9 18 6-6-6-6" />
                         </svg>

@@ -10,8 +10,8 @@ export default (props: any) => (
             <div id="header-title" className="flex gap-3 items-center">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
-                        stroke-linecap="round" stroke-linejoin="round"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"
+                        strokeLinecap="round" strokeLinejoin="round"
                         className="lucide lucide-layout-list w-6 h-6 stroke-gray-300">
                         <rect width="7" height="7" x="3" y="3" rx="1" />
                         <rect width="7" height="7" x="3" y="14" rx="1" />
@@ -28,7 +28,7 @@ export default (props: any) => (
                 props.setIsCreateOpen(true);
             }}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                     className="w-9 h-9 p-1 lucide lucide-plus stroke-green-500 rounded-full hover:bg-green-500/30">
                     <path d="M5 12h14" />
                     <path d="M12 5v14" />
@@ -64,8 +64,8 @@ export default (props: any) => (
                                         className="group/paginate flex items-center justify-center w-7 h-7 bg-white rounded-lg hover:bg-tertiary hover:text-secondary">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                             height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeWidth="2" strokeLinecap="round"
+                                            strokeLinejoin="round"
                                             className="lucide lucide-chevron-down stroke-tertiary rotate-90 group-hover/paginate:stroke-off-white-text">
                                             <path d="m6 9 6 6 6-6" />
                                         </svg>
@@ -94,8 +94,8 @@ export default (props: any) => (
                                         className="group/paginate flex items-center justify-center w-7 h-7 bg-white rounded-lg hover:bg-tertiary hover:text-secondary">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                             height="24" viewBox="0 0 24 24" fill="none"
-                                            stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeWidth="2" strokeLinecap="round"
+                                            strokeLinejoin="round"
                                             className="lucide lucide-chevron-down stroke-tertiary -rotate-90 group-hover/paginate:stroke-off-white-text">
                                             <path d="m6 9 6 6 6-6" />
                                         </svg>

@@ -6,8 +6,8 @@ export default (props: any) => (
     <div id="operation-menu"
         className="w-1/4 rounded-s-xl text-primary-text border border-secondary/20 overflow-hidden divide-y-2 divide-secondary/30">
         <div id="operation-menu-title" className="flex gap-3 text-accent-text p-6">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1"
-                stroke-linecap="round" stroke-linejoin="round"
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" strokeWidth="1"
+                strokeLinecap="round" strokeLinejoin="round"
                 className="lucide lucide-menu w-6 h-6 stroke-gray-300">
                 <line x1="4" x2="20" y1="12" y2="12" />
                 <line x1="4" x2="20" y1="6" y2="6" />

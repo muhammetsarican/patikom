@@ -15,7 +15,7 @@ export default () => {
                     <div id="about-app" className="flex flex-col gap-3">
                         <h1 className="flex items-center text-3xl font-semibold text-gray-200">
                             P<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                                 className="lucide lucide-paw-print stroke-primary">
                                 <circle cx="11" cy="4" r="2" />
                                 <circle cx="18" cy="8" r="2" />

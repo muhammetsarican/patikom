@@ -8,8 +8,8 @@ export default () => (
             <div id="header-title" className="flex gap-3 items-center h-9 py-1">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="1" stroke-linecap="round"
-                        stroke-linejoin="round"
+                        stroke="currentColor" strokeWidth="1" strokeLinecap="round"
+                        strokeLinejoin="round"
                         className="lucide lucide-square-pen w-6 h-6 stroke-gray-300">
                         <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
                         <path
