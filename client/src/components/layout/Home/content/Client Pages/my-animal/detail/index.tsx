@@ -1,7 +1,7 @@
 export default () => (
     //  <!-- record detail - start -->
     <div id="operation-item"
-        className="hidden flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
+        className="flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
         data-name="detail-page">
         <div id="header"
             className="flex items-center gap-3 justify-between p-5 border-b-2 border-secondary/30">

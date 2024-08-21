@@ -1,7 +1,7 @@
 import ClipboardList from "../../../../../../../assets/icons/clipboard-list";
 import ClipboardPlus from "../../../../../../../assets/icons/clipboard-plus";
 
-export default () => (
+export default (props: any) => (
     //  <!-- operation menu - start -->
     <div id="operation-menu"
         className="w-1/4 rounded-s-xl text-primary-text border border-secondary/20 overflow-hidden divide-y-2 divide-secondary/30">
@@ -20,7 +20,10 @@ export default () => (
             <li className="w-full">
                 <button
                     className="w-full flex items-center justify-center px-1 py-3 hover:bg-tertiary/90 hover:text-off-white-text"
-                    id="operation-button" data-referPage="list-page">
+                    id="operation-button" data-referPage="list-page" onClick={() => {
+                        props.makeAllFalse();
+                        props.setIsListOpen(true);
+                    }}>
                     <span className="flex justify-between items-center w-4/6">
                         <ClipboardList className={""} />
                         <p className="capitalize w-full text-start px-5">kayıt listesi</p>
@@ -30,7 +33,10 @@ export default () => (
             <li className="w-full">
                 <button
                     className="w-full flex items-center justify-center px-1 py-3 hover:bg-tertiary/90 hover:text-off-white-text"
-                    id="operation-button" data-referPage="create-page">
+                    id="operation-button" data-referPage="create-page" onClick={() => {
+                        props.makeAllFalse();
+                        props.setIsCreateOpen(true);
+                    }}>
                     <span className="flex justify-between items-center w-4/6">
                         <ClipboardPlus className={""} />
                         <p className="capitalize w-full text-start px-5">yeni kayıt</p>

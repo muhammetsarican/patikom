@@ -1,6 +1,6 @@
 import ListItem from "./list-item";
 
-export default () => (
+export default (props: any) => (
     // <!-- list record - start -->
     <div id="operation-item"
         className="flex text-accent-text gap-7 flex-col border border-secondary/20 rounded-e-xl h-full"
@@ -23,7 +23,10 @@ export default () => (
                 </span>
                 <h1 className="font-sora text-lg sm:text-xl">Hayvanlarım / Kayıt Listesi</h1>
             </div>
-            <button id="operation-button" data-referPage="create-page">
+            <button id="operation-button" data-referPage="create-page" onClick={() => {
+                props.makeAllFalse();
+                props.setIsCreateOpen(true);
+            }}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     className="w-9 h-9 p-1 lucide lucide-plus stroke-green-500 rounded-full hover:bg-green-500/30">
@@ -47,15 +50,15 @@ export default () => (
                         </tr>
                     </thead>
                     <tbody className="bg-white text-primary-text capitalize">
-                        <ListItem />
-                        <ListItem />
-                        <ListItem />
-                        <ListItem />
-                        <ListItem />
-                        <ListItem />
-                        <ListItem />
-                        <ListItem />
-                        <ListItem />
+                        <ListItem {...props} />
+                        <ListItem {...props} />
+                        <ListItem {...props} />
+                        <ListItem {...props} />
+                        <ListItem {...props} />
+                        <ListItem {...props} />
+                        <ListItem {...props} />
+                        <ListItem {...props} />
+                        <ListItem {...props} />
                     </tbody>
                     <tfoot className="bg-slate-50 text-accent-text">
                         <tr className="uppercase">
