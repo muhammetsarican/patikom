@@ -2,6 +2,7 @@ import { useState } from "react"
 import BookOpenText from "../../../../assets/icons/book-open-text"
 import House from "../../../../assets/icons/house"
 import AvatarBox from "./AvatarBox"
+import { Link } from "react-router-dom"
 
 export default () => {
     const [avatarBoxIsOpen, setAvatarBoxIsOpen] = useState(false);
@@ -10,7 +11,7 @@ export default () => {
         <div id="header" className="relative flex items-center justify-between bg-off-white-text px-2 py-7">
             <div className="container flex items-center justify-between">
                 <div id="title" className="">
-                    <a href="./index.html">
+                    <Link to="/home">
                         <h1 className="flex items-center text-4xl font-semibold">
                             P<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24"
                                 fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -22,28 +23,28 @@ export default () => {
                                     d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z" />
                             </svg>ti.kom
                         </h1>
-                    </a>
+                    </Link>
                 </div>
                 <div className="menu w-3/4">
                     <ul className="flex gap-3 items-center justify-end text-sm">
                         <li>
-                            <a href="./index.html"
+                            <Link to="/home"
                                 className="group/navigation-menu flex flex-col items-center justify-center px-3 py-1 rounded-sm hover:border-b-2 border-primary">
                                 <House className="w-6 h-6" />
                                 <p className="hidden text-accent-text group-hover/navigation-menu:flex">
                                     Anasayfa</p>
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="./about-me.html"
+                            <Link to="/about-me"
                                 className="group/navigation-menu flex flex-col items-center justify-center px-3 py-1 rounded-sm hover:border-b-2 border-primary">
                                 <BookOpenText className="w-6 h-6" />
                                 <p className="hidden text-accent-text group-hover/navigation-menu:flex">
                                     Hakkımda</p>
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a href="./contact-me.html"
+                            <Link to="/contact-me"
                                 className="group/navigation-menu flex flex-col items-center justify-center px-3 py-1 rounded-sm hover:border-b-2 border-primary">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -53,7 +54,7 @@ export default () => {
                                 </svg>
                                 <p className="hidden text-accent-text group-hover/navigation-menu:flex">
                                     İletişim</p>
-                            </a>
+                            </Link>
                         </li>
 
                         <li

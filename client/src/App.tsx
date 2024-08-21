@@ -1,13 +1,14 @@
-import Auth from "./components/layout/Auth"
-import Home from "./components/layout/Home"
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom"
 
 function App() {
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    navigate("/home")
+  }, [])
   return (
-    <>
-      <Home />
-      <Auth />
-    </>
+    <Outlet />
   )
 }
 

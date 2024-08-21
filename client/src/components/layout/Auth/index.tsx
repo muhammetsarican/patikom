@@ -1,9 +1,13 @@
-import Login from "./content/login";
-import Register from "./content/register";
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 
-export default () => (
-    <>
-        <Login />
-        <Register />
-    </>
-)
+export default () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        navigate("login");
+    }, [])
+    return (
+        <Outlet />
+    )
+}
