@@ -1,8 +1,11 @@
 import ReactDOM from 'react-dom/client'
 import RouterProvider from './providers/RouterProvider.tsx'
+import { AxiosProvider } from './providers/AxiosProvider.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <>
-    <RouterProvider />
+    <AxiosProvider>
+      <RouterProvider />
+    </AxiosProvider>
   </>,
 )
