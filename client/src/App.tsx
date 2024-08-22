@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom"
-import { checkStorage } from "./helpers/checkAuth";
+import { useAuth } from "./providers/AuthProvider";
 
 function App() {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   useEffect(() => {
-    checkStorage() ? navigate("/home") : navigate("/auth");
-  }, [])
+    navigate("/home");
+  }, [, user])
+
   return (
     <Outlet />
   )

@@ -1,6 +1,23 @@
 import ContainerBg from "@/assets/images/register/container-bg.png"
 
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useForm } from "react-hook-form"
+import { useAuth } from "../../../../../providers/AuthProvider";
+import { Link } from "react-router-dom";
+
 export default () => {
+    const { registerSubmit } = useAuth();
+
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    const schema = yup.object({
+        fname: yup.string().min(3, "İsim alanı en az 3 karakterden oluşmalıdır."),
+        lname: yup.string().min(3, "Soyisim alanı en az 3 karakterden oluşmalıdır."),
+        mail: yup.string().email("Lütfen geçerli bir e-posta adresi giriniz.").matches(emailRegex, "E-postanız geçerli kurallar ile uyuşmuyor.").required("E-posta alanı girilmesi zorunludur."),
+        password: yup.string().min(8, "Şifre en az 8 karakterden oluşmalıdır.").required("Şifre alanı girilmesi zorunludur."),
+    })
+    const { register, formState: { errors: { fname, lname, mail, password } }, handleSubmit } = useForm({ resolver: yupResolver(schema) })
     return (
         <>
             <div className="container flex justify-center items-center h-full" style={{ marginTop: "5%", marginBottom: "5%" }}>
@@ -12,29 +29,29 @@ export default () => {
                             <h6 id="login-title" className="font-sora text-5xl text-center text-tertiary">Hesap Oluştur!</h6>
                         </div>
                         <div id="form" className="flex justify-center items-start h-fit">
-                            <form action="" className="flex flex-col gap-5 w-5/6 h-1/2 px-3 py-7">
+                            <form action="" className="flex flex-col gap-5 w-5/6 h-1/2 px-3 py-7" onSubmit={handleSubmit(registerSubmit)}>
                                 <div className="flex flex-col gap-3">
                                     <input
                                         className="p-3 rounded-lg font-montserrat text-tertiary text-sm h-fit focus:outline-none shadow-2xl"
-                                        type="text" name="" id="" placeholder="İsminizi giriniz"></input>
-                                    <p className="hidden text-xs text-red-500 font-light">* İsim girilmesi zorunlu alandır.</p>
+                                        type="text" id="" placeholder="İsminizi giriniz" {...register("fname")}></input>
+                                    {fname && <p className="text-xs text-red-500 font-light">* {fname.message}</p>}
                                     <input
                                         className="p-3 rounded-lg font-montserrat text-tertiary text-sm h-fit focus:outline-none shadow-2xl"
-                                        type="text" name="" id="" placeholder="Soy isminizi giriniz"></input>
-                                    <p className="hidden text-xs text-red-500 font-light">* Soyisim girilmesi zorunlu alandır.
-                                    </p>
+                                        type="text" id="" placeholder="Soy isminizi giriniz" {...register("lname")}></input>
+                                    {lname && <p className="text-xs text-red-500 font-light">* {lname.message}
+                                    </p>}
                                     <input
                                         className="p-3 rounded-lg font-montserrat text-tertiary text-sm h-fit focus:outline-none shadow-2xl"
-                                        type="email" name="" id="" placeholder="E-postanızı giriniz"></input>
-                                    <p className="hidden text-xs text-red-500 font-light">* E-posta girilmesi zorunlu alandır.
-                                    </p>
+                                        type="email" id="" placeholder="E-postanızı giriniz" {...register("mail")}></input>
+                                    {mail && <p className="text-xs text-red-500 font-light">* {mail.message}
+                                    </p>}
                                     <input
                                         className="p-3 rounded-lg font-montserrat text-tertiary text-sm h-fit focus:outline-none shadow-2xl"
-                                        type="password" name="" id="" placeholder="Şifrenizi giriniz"></input>
-                                    <p className="hidden text-xs text-red-500 font-light">* Şifre girilmesi zorunlu alandır.</p>
+                                        type="password" id="" placeholder="Şifrenizi giriniz" {...register("password")}></input>
+                                    {password && <p className="text-xs text-red-500 font-light">* {password.message}</p>}
                                     <input
                                         className="p-3 rounded-lg font-montserrat text-tertiary text-sm h-fit focus:outline-none shadow-2xl"
-                                        type="password" name="" id="" placeholder="Şifrenizi tekrar giriniz"></input>
+                                        type="password" id="" placeholder="Şifrenizi tekrar giriniz"></input>
                                     <p className="hidden text-xs text-red-500 font-light">* Şifre tekrar girilmesi zorunlu
                                         alandır.</p>
 
@@ -54,9 +71,9 @@ export default () => {
                             </form>
                         </div>
                         <div id="other-links" className="text-center text-sm text-primary-text py-10">
-                            <p>Hesabınız varsa, giriş yapmak için <a href="./login.html"
+                            <p>Hesabınız varsa, giriş yapmak için <Link to="../login"
                                 className="text-tertiary font-bold hover:text-link-text underline underline-offset-2">giriş
-                                yap</a>'a
+                                yap</Link>'a
                                 ilerleyiniz.</p>
                         </div>
                     </div>
