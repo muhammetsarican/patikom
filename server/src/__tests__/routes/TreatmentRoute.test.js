@@ -75,7 +75,8 @@ describe("/treatment", () => {
             })
             test("if all correct", async () => {
                 const res = await request(app).post(`/treatment`).send({
-                    title: "pregnant check"
+                    title: "pregnant check",
+                    animal_id: new mongoose.Types.ObjectId()
                 }).set("authorization", `Bearer ${users.vet.tokens.access_token}`);
 
                 customExpect(res).toBeCreated();

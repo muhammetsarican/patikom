@@ -24,6 +24,15 @@ services:
     networks:
       - patikom
 
+  client:
+    build: ./client/
+    # restart: always # this line for server, because this code runs the container at startup
+    container_name: patikom_client
+    ports:
+      - 5173:5173
+    networks:
+      - patikom
+
 volumes:
   data:
 
