@@ -5,6 +5,7 @@ import { AuthProvider } from './providers/AuthProvider.tsx'
 import { AnimalDataProvider } from './providers/AnimalDataProvider.tsx'
 import { FolkDataProvider } from './providers/FolkDataProvider.tsx'
 import { VaccineDataProvider } from './providers/VaccineDataProvider.tsx'
+import { PregnantLogDataProvider } from './providers/PregnantLogDataProvider.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <FolkDataProvider>
           <AnimalDataProvider>
             <VaccineDataProvider>
-              <RouterProvider />
+              <PregnantLogDataProvider>
+                <RouterProvider />
+              </PregnantLogDataProvider>
             </VaccineDataProvider>
           </AnimalDataProvider>
         </FolkDataProvider>
