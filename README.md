@@ -62,18 +62,28 @@ Run the dockerfile
 
 #### At last go the port which you set at .env file in base dir, Congratulations 🎉
 ## 📈 Weekly Progress
+  ### Week 1: Laying the Foundation
 
-### First Week
+  - 🗂 Planned and structured my project using Trello, ensuring a well-organized approach.
+  - 🌐 Developed the backend API, diving deep into Node.js, Express, and Docker.
+  - 🧠 Enhanced my understanding of Express, JWT, and the importance of error handling.
 
-- **The goal:** Complete backend api
+  ### Week 2: Testing the Waters
 
-- **Personal improvements:** 
-    - During this time, I repeated my knowledge about node, express and docker.
-    - I better understood how to express works and how to use json web token.
-    - I realized the importance of error handling.
-    - I learned how to create better commits and run my application in docker.
-    - I realized importance of planning and I gained experience in using Trello.
-    - Lastly, I reinforced the information about the backend nicely.
+  - 🛠 Tested the app using Jest and Supertest, fixing routes and controllers along the way.
+  - 🔍 Realized the critical importance of testing, and improved test codes by refactoring repeated code into functions or classes.
+  - 🚀 Gained a newfound appreciation for testing as an informative and enjoyable part of development.
+
+  ### Week 3: Designing the UI
+
+  - 🎨 Created a cohesive UI theme using Tailwind CSS, covering various pages like the main page, login, and records pages.
+  - 🟧 Developed a color palette with an orange theme, and deepened my understanding of UI design principles.
+
+  ### Final Week: Bringing It All Together
+
+  - ⚛️ Built the frontend app using ReactJS, combining the backend and theme into a cohesive application.
+  - 🔄 Integrated React Router DOM for navigation, React Hook Form for form handling, Yup for validation, and Axios for API communication.
+  - 🛠 Practiced and refined my React skills, especially in routing and form management.
 
 ## 🖋️ Authors
 
