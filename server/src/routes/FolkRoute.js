@@ -10,7 +10,7 @@ class FolkRoute extends BaseRoute {
 
     indexRoutes() {
         super.listOne("vet");
-        super.listAll("vet");
+        super.listAll();
         super.newRecord("vet");
         super.updateOne("vet")
         super.deleteOne("vet")

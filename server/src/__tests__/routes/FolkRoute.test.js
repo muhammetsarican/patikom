@@ -31,11 +31,6 @@ describe("/folk", () => {
 
                 customExpect(res).toBeForbidden();
             })
-            test("with unauthorized token", async () => {
-                const res = await request(app).get("/folk").set("authorization", `Bearer ${users.default.tokens.access_token}`)
-
-                customExpect(res).toBeUnauthorized();
-            })
             test("with authorized token", async () => {
                 const res = await request(app).get("/folk").set("authorization", `Bearer ${users.vet.tokens.access_token}`)
 

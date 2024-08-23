@@ -35,7 +35,7 @@ class BaseRoute {
     indexRoutes() {
         this.newRecord();
         this.listOne();
-        this.listAll("admin");
+        this.listAll();
         this.updateOne();
         this.deleteOne();
         return this.router;

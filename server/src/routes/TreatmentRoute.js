@@ -21,10 +21,10 @@ class TreatmentRoute extends BaseRoute {
     }
 
     indexRoutes() {
-        super.listAll("vet");
-        super.newRecord("vet");
-        super.updateOne("vet");
-        super.deleteOne("vet");
+        super.listAll();
+        super.newRecord();
+        super.updateOne();
+        super.deleteOne();
         this.router = super.indexRoutes();
         this.addCategory(this.router, "vet");
         this.addMedicine(this.router, "vet");
