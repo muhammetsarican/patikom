@@ -9,18 +9,22 @@ type AuthContextType = {
     registerSubmit(data: any): void
     user: any
     logout(): void
+    vetArray: any
 }
 
 const AuthContext = createContext<AuthContextType>({
     loginSubmit: () => { },
     registerSubmit: () => { },
     user: {},
-    logout: () => { }
+    logout: () => { },
+    vetArray: null
 })
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
     const { client, setHeader } = useAxios();
+
     const [user, setUser] = useState<any>(null);
+    const [vetArray, setVetArray] = useState<any>(null);
 
     const validateUser = () => {
         const token = getTokenFromStorage();
@@ -37,6 +41,17 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
                 setUser(null);
             }
         };
+    }
+
+    const getVetArray = () => {
+        if (user) {
+            client("/user", {
+                method: "get"
+            })
+                .then((response: any) => response.data)
+                .then((data: any) => setVetArray(data.message.filter((vet: any) => vet.role === "vet")))
+                .catch((err: any) => alert(err.response.data.message))
+        }
     }
 
     const loginSubmit = (data: any) => {
@@ -81,7 +96,11 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         validateUser();
     }, []);
 
-    const values = { loginSubmit, registerSubmit, user, logout };
+    useEffect(() => {
+        getVetArray();
+    }, [user]);
+
+    const values = { loginSubmit, registerSubmit, user, logout, vetArray };
 
     return <AuthContext.Provider value={values}>
         {children}

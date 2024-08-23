@@ -6,6 +6,9 @@ import { AnimalDataProvider } from './providers/AnimalDataProvider.tsx'
 import { FolkDataProvider } from './providers/FolkDataProvider.tsx'
 import { VaccineDataProvider } from './providers/VaccineDataProvider.tsx'
 import { PregnantLogDataProvider } from './providers/PregnantLogDataProvider.tsx'
+import { TreatmentDataProvider } from './providers/TreatmentDataProvider.tsx'
+import { CategoryDataProvider } from './providers/CategoryDataProvider.tsx'
+import { MedicineDataProvider } from './providers/MedicineDataProvider.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <>
@@ -15,7 +18,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <AnimalDataProvider>
             <VaccineDataProvider>
               <PregnantLogDataProvider>
-                <RouterProvider />
+                <CategoryDataProvider>
+                  <MedicineDataProvider>
+                    <TreatmentDataProvider>
+                      <RouterProvider />
+                    </TreatmentDataProvider>
+                  </MedicineDataProvider>
+                </CategoryDataProvider>
               </PregnantLogDataProvider>
             </VaccineDataProvider>
           </AnimalDataProvider>

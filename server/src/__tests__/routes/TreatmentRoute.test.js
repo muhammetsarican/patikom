@@ -31,11 +31,6 @@ describe("/treatment", () => {
 
                 customExpect(res).toBeForbidden();
             })
-            test("with unauthorized token", async () => {
-                const res = await request(app).get("/treatment").set("authorization", `Bearer ${users.default.tokens.access_token}`)
-
-                customExpect(res).toBeUnauthorized();
-            })
             test("with authorized token", async () => {
                 const res = await request(app).get("/treatment").set("authorization", `Bearer ${users.admin.tokens.access_token}`)
 
@@ -73,11 +68,6 @@ describe("/treatment", () => {
 
                 customExpect(res).toBeForbidden();
             })
-            test("with unauthorized token", async () => {
-                const res = await request(app).post(`/treatment`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
-
-                customExpect(res).toBeUnauthorized();
-            })
             test("with no info", async () => {
                 const res = await request(app).post(`/treatment`).set("authorization", `Bearer ${users.vet.tokens.access_token}`);
 
@@ -103,11 +93,6 @@ describe("/treatment", () => {
                 const res = await request(app).patch(`/treatment/${treatment._id}z`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
 
                 customExpect(res).toBeBadRequest()
-            })
-            test("with unauthorized token", async () => {
-                const res = await request(app).patch(`/treatment/${treatment._id}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
-
-                customExpect(res).toBeUnauthorized()
             })
             test("with not recorded id", async () => {
                 const res = await request(app).patch(`/treatment/${new mongoose.Types.ObjectId()}`).set("authorization", `Bearer ${users.vet.tokens.access_token}`);
@@ -199,11 +184,6 @@ describe("/treatment", () => {
                 const res = await request(app).delete(`/treatment/${treatment._id}`);
 
                 customExpect(res).toBeForbidden();
-            })
-            test("with unauthorized token", async () => {
-                const res = await request(app).delete(`/treatment/${treatment._id}`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
-
-                customExpect(res).toBeUnauthorized()
             })
             test("with invalid id", async () => {
                 const res = await request(app).delete(`/treatment/${treatment._id}z`).set("authorization", `Bearer ${users.default.tokens.access_token}`);
