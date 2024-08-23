@@ -4,6 +4,7 @@ import { AxiosProvider } from './providers/AxiosProvider.tsx'
 import { AuthProvider } from './providers/AuthProvider.tsx'
 import { AnimalDataProvider } from './providers/AnimalDataProvider.tsx'
 import { FolkDataProvider } from './providers/FolkDataProvider.tsx'
+import { VaccineDataProvider } from './providers/VaccineDataProvider.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <>
@@ -11,7 +12,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <AuthProvider>
         <FolkDataProvider>
           <AnimalDataProvider>
-            <RouterProvider />
+            <VaccineDataProvider>
+              <RouterProvider />
+            </VaccineDataProvider>
           </AnimalDataProvider>
         </FolkDataProvider>
       </AuthProvider>
