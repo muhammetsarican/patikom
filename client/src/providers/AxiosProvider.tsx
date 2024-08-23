@@ -15,7 +15,6 @@ const AxiosProvider = ({ children }: { children: ReactNode }) => {
     const axiosConfig = {
         baseURL: `http://${import.meta.env.VITE_SERVER_HOST}:${import.meta.env.VITE_SERVER_PORT}`,
         timeout: 1000,
-        headers: { 'authorization': 'Bearer ' }
     }
     const client = axios.create(axiosConfig);
 

@@ -7,7 +7,7 @@ import { decodeJwt } from "../helpers/jwt";
 type AuthContextType = {
     loginSubmit(data: any): void
     registerSubmit(data: any): void
-    user: object | null
+    user: any
     logout(): void
 }
 
@@ -20,12 +20,23 @@ const AuthContext = createContext<AuthContextType>({
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
     const { client, setHeader } = useAxios();
-    const [user, setUser] = useState<object | null>(null);
+    const [user, setUser] = useState<any>(null);
 
     const validateUser = () => {
         const token = getTokenFromStorage();
 
-        if (token) setUser(decodeJwt(token));
+        if (token) {
+            const tokenUser = decodeJwt(token);
+            if (tokenUser) {
+                setHeader(token);
+                setUser(tokenUser);
+            }
+            else {
+                setHeader("");
+                deleteTokenAtStorage();
+                setUser(null);
+            }
+        };
     }
 
     const loginSubmit = (data: any) => {

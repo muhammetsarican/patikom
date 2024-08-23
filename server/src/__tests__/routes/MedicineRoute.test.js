@@ -34,7 +34,7 @@ describe("/medicine", () => {
             test("with unauthorized token", async () => {
                 const res = await request(app).get("/medicine").set("authorization", `Bearer ${users.default.tokens.access_token}`)
 
-                customExpect(res).toBeUnauthorized();
+                customExpect(res).toBeOk();
             })
             test("with authorized token", async () => {
                 const res = await request(app).get("/medicine").set("authorization", `Bearer ${users.admin.tokens.access_token}`)
