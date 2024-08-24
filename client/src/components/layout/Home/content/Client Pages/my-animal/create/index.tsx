@@ -62,7 +62,7 @@ export default () => {
                                 className="col-span-2 border rounded-xl p-4 w-full bg-white text-xs text-gray-400 outline-none focus:outline-offset-0 focus:outline focus:outline-primary" id="" {...register("mother_id")}>
                                 <option value="0" className="text-gray-400">Anne adını seçiniz</option>
                                 {animalArray && animalArray.map((animal, index) => (
-                                    <option value={index + 1} className={`text-gray-400 ${animal.gender === "male" && "hidden"}`}>{animal.name}</option>
+                                    <option value={animal._id} className={`text-gray-400 ${animal.gender === "male" && "hidden"}`}>{animal.name}</option>
                                 ))}
                             </select>
                             {mother_id && <ErrorText err={mother_id.message || ""} />}
