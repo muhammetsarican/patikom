@@ -14,6 +14,10 @@ const AxiosContext = createContext<AxiosContextType>({
 const AxiosProvider = ({ children }: { children: ReactNode }) => {
     const axiosConfig = {
         baseURL: `http://${import.meta.env.VITE_SERVER_HOST}:${import.meta.env.VITE_SERVER_PORT}`,
+        withCredentials: true,
+        headers: {
+            Accept: 'application/json'
+        },
         timeout: 1000,
     }
     const client = axios.create(axiosConfig);
