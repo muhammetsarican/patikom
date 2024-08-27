@@ -16,7 +16,9 @@ const AxiosProvider = ({ children }: { children: ReactNode }) => {
         baseURL: `http://${import.meta.env.VITE_SERVER_HOST}:${import.meta.env.VITE_SERVER_PORT}`,
         withCredentials: true,
         headers: {
-            Accept: 'application/json'
+            Accept: 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type'
         },
         timeout: 1000,
     }
