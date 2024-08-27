@@ -20,8 +20,13 @@ const app = express();
 // addictions
 app.use(express.json());
 app.use(helmet());
-app.use(cors());
 app.use(bodyParser.json());
+
+const corsOptions = {
+    origin: [`http://${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT}`],
+    credentials: true
+}
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/", BaseRoutes);
